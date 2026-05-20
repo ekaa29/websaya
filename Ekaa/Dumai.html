@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA LISAN</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+/* HAMBURGER MENU */
+.menu-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    font-size:30px;
+    color:white;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    background:rgba(255,255,255,0.15);
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+/* MENU DROPDOWN */
+/* MENU DROPDOWN */
+.side-menu{
+    position:fixed;
+
+    top:80px;
+    right:-260px;
+
+    width:230px;
+
+    max-height:80vh; /* BATAS TINGGI MENU */
+
+    overflow-y:auto; /* AGAR BISA DISCROLL */
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px 0 0 20px;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    z-index:9998;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.side-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.side-menu a:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+       .menu-container{
+    display:flex;
+    flex-wrap:wrap; /* agar berderet */
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+       /* CARD MATERI */
+.gambar{
+
+    width:220px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:25px;
+
+    padding:25px 18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    animation:zoomIn 0.8s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:170px;
+}
+
+
+.gambar h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.gambar p{
+    color:#f1f1f1;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.gambar:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+        /* TOMBOL MENU SEBELUMNYA */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    background:rgba(255,255,255,0.2);
+    color:white;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:rgba(255,255,255,0.35);
+    transform:scale(1.05);
+}
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:99999;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal.active ~ .menu-icon{
+    display:none;
+}
+
+      .modal-content{
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    margin:0;
+
+    padding:40px;
+
+    border-radius:0;
+
+    width:100%;
+
+    height:100vh;
+
+    text-align:justify;
+
+    position:relative;
+
+    border:none;
+
+    animation:popupZoom 0.4s ease;
+
+    overflow-y:auto;
+}
+
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .slide{
+    display:none;
+    animation:fadeSlide 0.4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.slide-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.slide-buttons button:hover{
+    background:rgba(255,255,255,0.35);
+}
+
+@keyframes fadeSlide{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+      .close{
+    position:fixed;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    color:red;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.close:hover{
+    color:darkred;
+    transform:scale(1.1);
+}
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        .modal-content{
+    padding:25px;
+}
+
+.modal-content p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* TEKS BERJALAN */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-top:1px solid rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+}
+
+/* TEKS BERJALAN SMOOTH */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:12px 0;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.running-text span{
+    display:inline-block;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    padding-left:100%;
+
+    animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media screen and (max-width: 768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:60px;
+    }
+
+    /* CARD BERJEJER */
+   .menu-container{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+}
+
+    .gambar{
+        width:100%;
+        max-width:100%;
+
+        min-height:150px;
+
+        padding:18px 12px;
+
+        border-radius:20px;
+    }
+
+    .gambar h3{
+        font-size:16px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    /* TOMBOL */
+    .navigation-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* MENU */
+    .side-menu{
+        width:200px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        padding:20px;
+    }
+
+    .modal-content h2{
+        font-size:22px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn{
+        top:15px;
+        left:15px;
+
+        padding:8px 14px;
+
+        font-size:13px;
+    }
+
+    /* ICON MENU */
+    .menu-icon{
+        width:45px;
+        height:45px;
+
+        font-size:26px;
+    }
+
+}
+
+/* =========================
+   HP KECIL
+========================= */
+/* =========================
+   RESPONSIVE HP
+========================= */
+@media screen and (max-width:768px){
+
+    .menu-container{
+        display:grid;
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:15px;
+    }
+
+    .gambar{
+        width:100%;
+        min-height:150px;
+
+        padding:18px 12px;
+    }
+
+    .gambar h3{
+        font-size:15px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+☰
+</div>
+
+    <div class="side-menu" id="sideMenu">
+
+    <h3 style="color:white; margin-bottom:15px;">
+        Kabupaten / Kota
+    </h3>
+
+    <a href="Bengkalis.html">📍 Bengkalis</a>
+
+    <a href="Dumai.html">📍 Dumai</a>
+
+    <a href="Siak.html">📍 Siak</a>
+
+    <a href="Kampar.html">📍 Kampar</a>
+
+    <a href="Pelalawan.html">📍 Pelalawan</a>
+
+    <a href="IndragiriHilir.html">📍 Indragiri Hilir</a>
+
+    <a href="IndragiriHulu.html">📍 Indragiri Hulu</a>
+
+    <a href="RokanHilir.html">📍 Rokan Hilir</a>
+
+    <a href="RokanHulu.html">📍 Rokan Hulu</a>
+
+    <a href="KuantanSingingi.html">📍 Kuantan Singingi</a>
+
+    <a href="KepulauanMeranti.html">📍 Kepulauan Meranti</a>
+
+</div>
+
+    <h1><b>KOTA DUMAI</b></h1>
+
+     <div class="running-text">
+    <span>Dumai Kota Idaman</span>
+    </div>
+
+    <!-- TOMBOL MENU SEBELUMNYA -->
+    <a class="back-btn" href="Bengkalis.html">← Menu Sebelumnya</a>
+
+    
+
+    <div class="menu-container">
+    
+        <div class="gambar" onclick="bukaModal('Pantun Hantaran Belanja', '<b>Identitas Penutur</b>\nNama: Ngah Aroel (Syahrul Affandi)\nTempat Tinggal: Dumai\nPekerjaan: Guru di SMPN 14\n\n<b>1. Sejarah dan Asal-Usul</b>\n\nPantun hantaran belanja dituturkan secara anonim sehingga tidak diketahui secara pasti sejarah dan asal-usulnya. Namun, dapat dipastikan bahwa pantun hantaran belanja telah ada sejak zaman dahulu.\n\n<b>2. Persebaran</b>\n\nPantun hantaran belanja masih diturunkan secara turun-temurun dari penutur kepada anak dan cucu. Selain itu, pantun ini juga diajarkan dalam mata pelajaran BMR sehingga tetap tersebar di kalangan pelajar.\n\n<b>3. Karakteristik</b>\n\nCiri khas pantun hantaran belanja terletak pada dialeknya yang berbeda dibandingkan dengan pantun hantaran belanja di Bangkinang, Rokan Hilir, dan Bengkalis. Selain itu, karena Dumai merupakan daerah pesisir, isi pantunnya lebih dominan berkaitan dengan kehidupan pesisir.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1KOHSO84Qvu1wz93K8zZ299ItQxA927i0/view?usp=drivesdk')">
+            <h3>Pantun Hantaran Belanja</h3>
+            <p>Nathania Destanta Chrisanty Situmorang</p>
+            <p>25051103369</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Syair Nasib Melayu Irama Selendang Delima dan Surat Kapal', '<b>Identitas Penutur</b>\nNama: Syahrul Affandi (Ngah Aroel)\nUsia : 41 Tahun\nPekerjaan: Sastrawan\nAsal : Dumai\nSuku: Melayu\n\n<b>1. Sejarah dan Asal Usul</b>\n\nSyair dengan irama Selendang Delima dan Surat Kapal merupakan bagian dari tradisi sastra lisan Melayu yang berkembang di wilayah pesisir, termasuk di Dumai. Tradisi syair sendiri telah ada sejak masuknya pengaruh Islam ke Nusantara sekitar abad ke-16, yang kemudian berkembang sebagai media penyampaian nasihat, cerita, dan nilai-nilai kehidupan masyarakat Melayu. Dalam perkembangannya, syair tidak hanya disampaikan dalam bentuk teks, tetapi juga dilantunkan dengan berbagai irama khas. Salah satu tokoh penting dalam pelestarian sastra Melayu adalah Tenas Effendy yang melalui karya-karyanya menghidupkan kembali tradisi bersyair di tengah masyarakat.\n\nIrama Selendang Delima dan Surat Kapal merupakan bagian dari kekayaan musikal dalam tradisi lisan Melayu. Irama Selendang Delima biasanya mencerminkan kelembutan, keindahan, dan suasana yang lebih halus serta emosional. Sementara itu, irama Surat Kapal cenderung memiliki alunan yang lebih tegas dan mengalir, sering digunakan untuk bagian awal syair sebagai pembuka cerita atau pengantar suasana. Kedua irama ini menunjukkan bahwa sejak dahulu, masyarakat Melayu tidak hanya memperhatikan isi syair, tetapi juga cara penyampaiannya melalui variasi irama.\n\n<b>2. Persebaran Wilayah dan Tradisi di Dumai</b>\n\nDi wilayah Dumai, tradisi bersyair masih dijumpai dalam berbagai kegiatan budaya seperti acara adat, pertunjukan seni, maupun kegiatan pembelajaran. Irama-irama dalam syair Melayu, termasuk Selendang Delima dan Surat Kapal, tidak hanya berkembang di Dumai, tetapi juga tersebar di wilayah budaya Melayu lainnya seperti pesisir Riau dan Kepulauan Riau.\n\nDalam praktiknya di Dumai, penutur syair sering menggunakan variasi irama dalam satu penampilan. Hal ini juga terlihat dari hasil wawancara, di mana narasumber membawakan bait pertama dan kedua dengan irama Surat Kapal, kemudian beralih ke irama Selendang Delima pada bait ketiga. Pergantian irama ini menjadi bagian dari tradisi yang menunjukkan kemampuan penutur dalam mengolah penyampaian syair agar lebih menarik dan bermakna. Tradisi ini biasanya dituturkan oleh tokoh adat, seniman lokal, atau masyarakat yang memiliki pengetahuan tentang budaya Melayu, dengan tetap mempertahankan ciri khas dialek setempat.\n\n<b>3. Karakteristik yang Membedakan sastra Lisan lain</b>\n\nSyair Melayu yang dibawakan dengan irama seperti Selendang Delima dan Surat Kapal memiliki karakteristik yang membedakannya dari bentuk sastra lisan lainnya. Salah satu ciri utamanya adalah penggunaan irama tertentu dalam penyampaiannya, sehingga syair tidak hanya berfungsi sebagai teks, tetapi juga sebagai bentuk seni pertunjukan. Irama Surat Kapal biasanya digunakan pada bagian awal dengan tempo yang lebih teratur dan tegas, sehingga memberikan kesan sebagai pembuka atau pengantar cerita. Sementara itu, irama Selendang Delima cenderung lebih lembut dan ekspresif, sehingga sering digunakan untuk menyampaikan bagian yang lebih mendalam atau emosional.\n\nSelain itu, syair umumnya dituturkan secara monolog oleh satu orang penutur, berbeda dengan bentuk sastra lisan lain yang melibatkan banyak tokoh. Struktur syair terdiri atas bait-bait dengan empat baris dan rima yang sama, serta berisi rangkaian cerita atau nasihat yang berkelanjutan. Keunikan lainnya adalah adanya fleksibilitas dalam penggunaan irama, seperti yang ditemukan dalam penuturan di Dumai, di mana satu syair dapat menggunakan lebih dari satu irama. Hal ini menunjukkan bahwa sastra lisan Melayu bersifat dinamis dan memberikan ruang bagi penutur untuk mengekspresikan makna melalui variasi cara penyampaian.\n\n<b>4. Video Penutur</b>\n\nSyair Nasib Melayu Irama Selendang Delima \nhttps://drive.google.com/file/d/1wU7Ih7jroIRXQBjjdPoksE5i3KIQWpNe/view?usp=sharing\n\nSyair Nasib Melayu Irama Surat Kapal\nhttps://drive.google.com/file/d/1ewHgn7zevGdp_sK0mvvAj6fum36cPG18/view?usp=sharing')">
+            <h3>Syair Nasib Melayu Irama Selendang Delima dan Surat Kapal</h3>
+            <p>Nazhwa Chandra</p>
+            <P>25051103808</P>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Nandung', '<b>Identitas Penutur</b>\nNama: Syarifah Badariah Al-hinduan\nUsia: 76 Tahun\nTempat Tanggal Lahir: Dumai 31 Desember 1949\nAlamat Tempat Tinggal: Dumai Kota\n\nAtuk Syarifah Badariah atau biasa dipanggil Atuk Badariah adalah seorang wanita dari suku melayu asli Dumai, beliau juga berasal dari puak/teluk makmur yang merupakan desa pertama di Dumai, sebelum adanya kota Dumai. Atuk Badariah memiliki 10 orang anak, 5 perempuan dan 5 laki laki. Beliau juga merupakan keturunan dari PAM Al-Hinduan yang dimana PAM ini beliau dapatkan dari Ayahnya yang bernama Sayed Usman Al-Hinduan dan kakek beliau Sayed Abbas Al-Hinduan yang berasal dari Muar Malaysia.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nPada awalnya, Nandung hanya berupa nyanyian atau lantunan kalimat <i>La Ilaha Illalah</i> dan ditambahkan dengan kalimat-kalimat yang mampu membuat anak tidur dalam buaian. Perkembangan Nandung menjadi lebih kompleks dengan ditambahkannya pantun yang berisikan tentang agama, nasehat, akhlak dan pengajaran pendidikan. Saat ini Nandung telah mengalami perubahan bentuk penyajiannya. Biasanya Nandung hanya ada di dalam keluarga, khususnya dilakukan oleh ibu yang akan menidurkan anaknya. Istilah Nandung (menandung anak = nyanyian untuk menidurkan anak) sebenarnya dikenal secara meluas hampir di seluruh kawasan Kabupaten/Kota dalam wilayah Provinsi Riau, seperti: Kota Dumai dan Pekanbaru, Kabupaten Pelalawan, Siak Sri Indrapura, Bengkalis, Rokan Hilir, Rokan Hulu, Indragiri Hilir dan Indragiri Hulu.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nTradisi nandung adalah salah satu bentuk tradisi lisan Melayu Riau yang juga ditemukan di Kota Dumai, di Kabupaten Indragiri Hulu tepatnya di Kota Rengat, dan juga di Kecamatan Peranap. Nandung adalah salah satu tradisi lisan dan menggunakan bahasa lisan yang diturunkan secara  turun-temurun.\n\n<b>3. Karakteristik Yang Membedakan Dengan Sastra Lisan Yang Lain</b>\n\nNandung berbentuk menyerupai pantun yang terdiri dari 4 baris. Dua baris pertama merupakan sampiran dan dua baris selanjutnya merupakan isi. Dapat menggunakan rima ab-ab atau pun bebas (bukan rima ab-ab). Pada baris isi sebuah nandung biasanya mengandung kalimat-kalimat nasihat, kalimat <i>Thoyyibah</i> dalam Islam, petuah hingga peribahasa.\n\nKeunikan nandung terlihat dari isi liriknya yang banyak mengandung nilai religius, nasihat, dan ungkapan perasaan. Hal ini dapat dilihat dari lirik berikut:\n\n<b>Bait Pertama</b>\nYa Allah Ya tuhan kami...\nNabi Muhammad Penghulu Kami...\nKitab Quran imam Kami...\nKakbahtullah kibelat kami...\n\n<b>Bait Kedua</b>\n\nKayu Erak lindungan Bulan...\nJatuh sedahan digoyang gempo...\nNabi Allah meninggalkan pesan... \nSuruh sembahyang dengan puaso...\n\n<b>Bait Ketiga</b>\nKalau tidak kerana bulan...\nTidakan bintang meninggi hari...\nKalau tidak kernalah tuan...\nTidak saya jadi begini...\n\n<b>Bait Keempat</b>\nBatu panjang tebingnya tinggi...\nTanah dumai tanahlah rendah....\nBatu panjang tempat berhenti...\nTanah dumai tanah betuah...\n\nPada bait pertama, isi nandung berisi pujian kepada Allah SWT, Nabi Muhammad SAW, serta penegasan bahwa Al-Qur’an sebagai pedoman hidup dan Ka’bah sebagai kiblat umat islam.\n\nPada bait kedua, terdapat pesan Nabi Muhammad SAW kepada umatnya untuk melaksanakan salat dan puasa.\n\nPada bait ketiga, nandung juga dapat berisi ungkapan perasaan, seperti kisah seseorang yang mengalami patah hati.\n\nPada bait keempat, nandung dapat menceritakan keadaan suatu daerah.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1HWATdeIwo1JPFPQfGUcdhyipiqor4RAo/view?usp=drivesdk')">
+            <h3>Nandung</h3>
+            <p>Eka Puji Astuti</p>
+            <p>2505110740</p>
+        </div>
+        
+    </div>
+
+    <div class="navigation-buttons">
+        <a class="btn" href="index.html"><b>Kembali ke Halaman Utama</b></a>
+
+        <a class="btn" href="Inhil.html"><b>Halaman Selanjutnya</b></a>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalDesc"></div>
+
+<div class="slide-buttons" id="slideButtons" style="display:none;">
+    <button onclick="prevSlide()">⬅ Sebelumnya</button>
+    <button onclick="nextSlide()">Selanjutnya ➡</button>
+</div>
+        </div>
+    </div>
+
+  <script>
+
+function bukaModal(judul, deskripsi) {
+
+    const modalTitle = document.getElementById('modalTitle');
+
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalTitle.innerText = judul;
+
+    modalDesc.innerHTML =
+    deskripsi
+    .replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<br><br><a href="$1" target="_blank" style="color:#87cefa; font-size:18px; font-weight:bold; text-decoration:none;">🎥 Lihat Video Penutur</a>'
+    )
+    .replace(/\n/g,'<br>');
+
+    document.getElementById('myModal').style.display = 'block';
+
+     document.body.style.overflow = "hidden";
+}
+
+function tutupModal() {
+
+    document.getElementById('myModal').style.display = 'none';
+
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById('myModal');
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+
+    document
+    .getElementById("sideMenu")
+    .classList
+    .toggle("active");
+}
+
+</script>
+</body>
+</html>

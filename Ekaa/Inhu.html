@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA LISAN</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+/* HAMBURGER MENU */
+.menu-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    font-size:30px;
+    color:white;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    background:rgba(255,255,255,0.15);
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+/* MENU DROPDOWN */
+/* MENU DROPDOWN */
+.side-menu{
+    position:fixed;
+
+    top:80px;
+    right:-260px;
+
+    width:230px;
+
+    max-height:80vh; /* BATAS TINGGI MENU */
+
+    overflow-y:auto; /* AGAR BISA DISCROLL */
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px 0 0 20px;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    z-index:9998;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.side-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.side-menu a:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+       .menu-container{
+    display:flex;
+    flex-wrap:wrap; /* agar berderet */
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+       /* CARD MATERI */
+.gambar{
+
+    width:220px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:25px;
+
+    padding:25px 18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    animation:zoomIn 0.8s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:170px;
+}
+
+
+.gambar h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.gambar p{
+    color:#f1f1f1;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.gambar:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+        /* TOMBOL MENU SEBELUMNYA */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    background:rgba(255,255,255,0.2);
+    color:white;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:rgba(255,255,255,0.35);
+    transform:scale(1.05);
+}
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:99999;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal.active ~ .menu-icon{
+    display:none;
+}
+
+      .modal-content{
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    margin:0;
+
+    padding:40px;
+
+    border-radius:0;
+
+    width:100%;
+
+    height:100vh;
+
+    text-align:justify;
+
+    position:relative;
+
+    border:none;
+
+    animation:popupZoom 0.4s ease;
+
+    overflow-y:auto;
+}
+
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .slide{
+    display:none;
+    animation:fadeSlide 0.4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.slide-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.slide-buttons button:hover{
+    background:rgba(255,255,255,0.35);
+}
+
+@keyframes fadeSlide{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+      .close{
+    position:fixed;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    color:red;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.close:hover{
+    color:darkred;
+    transform:scale(1.1);
+}
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        .modal-content{
+    padding:25px;
+}
+
+.modal-content p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* TEKS BERJALAN */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-top:1px solid rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+}
+
+/* TEKS BERJALAN SMOOTH */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:12px 0;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.running-text span{
+    display:inline-block;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    padding-left:100%;
+
+    animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media screen and (max-width: 768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:60px;
+    }
+
+    /* CARD BERJEJER */
+   .menu-container{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+}
+
+    .gambar{
+        width:100%;
+        max-width:100%;
+
+        min-height:150px;
+
+        padding:18px 12px;
+
+        border-radius:20px;
+    }
+
+    .gambar h3{
+        font-size:16px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    /* TOMBOL */
+    .navigation-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* MENU */
+    .side-menu{
+        width:200px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        padding:20px;
+    }
+
+    .modal-content h2{
+        font-size:22px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn{
+        top:15px;
+        left:15px;
+
+        padding:8px 14px;
+
+        font-size:13px;
+    }
+
+    /* ICON MENU */
+    .menu-icon{
+        width:45px;
+        height:45px;
+
+        font-size:26px;
+    }
+
+}
+
+/* =========================
+   HP KECIL
+========================= */
+/* =========================
+   RESPONSIVE HP
+========================= */
+@media screen and (max-width:768px){
+
+    .menu-container{
+        display:grid;
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:15px;
+    }
+
+    .gambar{
+        width:100%;
+        min-height:150px;
+
+        padding:18px 12px;
+    }
+
+    .gambar h3{
+        font-size:15px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+☰
+</div>
+
+    <div class="side-menu" id="sideMenu">
+
+    <h3 style="color:white; margin-bottom:15px;">
+        Kabupaten / Kota
+    </h3>
+
+    <a href="Bengkalis.html">📍 Bengkalis</a>
+
+    <a href="Dumai.html">📍 Dumai</a>
+
+    <a href="Siak.html">📍 Siak</a>
+
+    <a href="Kampar.html">📍 Kampar</a>
+
+    <a href="Pelalawan.html">📍 Pelalawan</a>
+
+    <a href="Inhil.html">📍 Indragiri Hilir</a>
+
+    <a href="Inhu.html">📍 Indragiri Hulu</a>
+
+    <a href="Rokan Hilir.html">📍 Rokan Hilir</a>
+
+    <a href="Rokan Hulu.html">📍 Rokan Hulu</a>
+
+    <a href="Kuansing.html">📍 Kuantan Singingi</a>
+
+    <a href="Meranti.html">📍 Kepulauan Meranti</a>
+
+</div>
+
+    <h1><b>KABUPATEN INDRAGIRI HULU</b></h1>
+
+     <div class="running-text">
+    <span>Dayung Serempak Untung Serentak</span>
+    </div>
+
+    <!-- TOMBOL MENU SEBELUMNYA -->
+    <a class="back-btn" href="Inhil.html">← Menu Sebelumnya</a>
+
+    <div class="menu-container">
+
+        <div class="gambar" onclick="bukaModal('Jikie', '<b>Identitas Penutur</b>\nNama: Datuk Heldi\nUsia: 60 Tahun\nTerakhir menampilkan jikie di tahun 2023\n\n<b>1. Asal Usul Jikie</b>\n\nJikie ini berasal dari kata “zikir”, tetapi mengalami perubahan penyebutan sesuai dengan cara pengucapan orang melayu dahulu. Isinya berupa syair doa, pujian, dan kisah Nabi Muhammad SAW yang dilantunkan dengan irama tertentu. Dalam penampilannya juga diiringi alat musik gebano/rebano yaitu alat musik rebana besar.\n\n<b>2. Pesebaran Tradisi</b>\n\nTradisi jikie ini tersebar ke beberapa wilayah di Indragiri hulu, di desa baturijal hulu dan baturijal hilir, kecamatan peranap dan beberapa daerah sekitarnya. Tradisi jikie biasa dimainkan saat ada acara pernikahan, hajatan, hari hari keagamaan. Paling sedikit pemain untuk dapat menampilkan jikie ini harus ada 8 orang, dan ada yang menjadi kepala atau pemimpin yang kemudian diikuti oleh anggota lain. Cara melantunkan jikie dengan nada yang mendayu dan berulang.\n\n<b>3. Karakteristik</b>\n\nJikie di baturijal ini berbeda mungkin dari cara penyampaian, di setiap daerah persebarannya mungkin ada perbedaan dalam penyampaiannya, jikie juga mirip dengan bezanji namun jikie tidak memiliki buku atau kitab khusus untuk dibaca dalam menampilkan tradisi ini. Jikie juga menggunakan alat musik khas yaitu rebana besar, juga ada pemimpin atau tukang mula dalam pernampilannya.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1VfVFc-Cv0KTWz5gqk2Yi2ZmIx5mG6Thn/view?usp=drivesdk')">
+            <h3>Jikie</h3>
+            <p>Zuliana Ragusti</p>
+            <p>25051103878</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Nandung Talang Mamak', '<b>Identitas Penutur</b>\nNama:   H. Mailiswin S. Sos M.Si\nTempat Tanggal Lahir: Rengat, 2 Mei 1959\nPensiunan ASN pada Dinas Pendidikan dan Kebudayaan Kabupaten Indragiri Hulu\n\n Sedikitnya 30 buku telah disusun ditulis dan 17 naskah sejarah seni budaya, skenario pertunjukan Seni Budaya, Puisi, Pantun, Syair Lagu serta Naskah Ide Garapan Tari.\n\n<b>1. Sejarah dan Asal Usul</b>\n\n   Kesenian Nandung merupakan tradisi vokal kuno masyarakat Talang Mamak yang asal-usul waktunya tidak dapat dipastikan karena telah menjadi kebiasaan turun-temurun para ibu saat menyusui atau menidurkan anak. Berdasarkan pemikiran Idawati dan Setiawan (2016), Nandung didefinisikan sebagai nyanyian pengantar tidur yang dilantunkan secara lembut, mendayu, dan berulang seiring ayunan buaian. Nandung berevolusi dari sekadar kalimat tauhid <i>La Ilaha Illallah</i> dan kata-kata penenang sederhana, menjadi bentuk yang lebih kompleks. Kini, kesenian tersebut juga mengintegrasikan pantun-pantun berisi pesan religius, nasihat bijak, serta pendidikan akhlak, sehingga fungsinya berkembang dari sekadar penenang menjadi media edukasi dini bagi anak.\n\n  Masyarakat Talang Mamak disebut juga suku anak dalam di Kabupaten Indragiri Hulu, Provinsi Riau, memiliki berbagai budaya yang masih dipertahankan secara lisan, mulai dari budaya melahirkan anak sampai dengan budaya menguburkan warga masyarakat Talang Mamak yang meninggal. Budaya tersebut ada yang atraktif, mempunyai roh dewa, pengobatan, keamanan, kampong, sengketa, perikanan, pertanian, setawar sedingin, serta bersenandung (be Nandung).\n\n   Menyimak bersenandung oleh masyarakat Talang Mamak, bukan hanya untuk menidurkan anak namun mereka be Nandung di berbagai waktu dan acara, antara lain:\n\n1) Be Nandung: Menidurkan anak di ketutu bandung (buayan).\n2) Be Nandung: Menunggu, mengawas anak gadis mereka bila ditandangi oleh pemuda Talang Mamak (pacaran) di paran rumah kediaman mereka.\n3) Be Nandung: menunggu, mengawasi padi di ladang, padi dijemur di halaman rumah.\n4) Be Nandung: menunggu suami pulang dari ladang, sambil mengayam lapik (tikar).\n5) Be Nandung: Dalam upacara pengobatan/ tolak bala/ betimbang.\n6) Be Nandung: dalam upacara Bayar Kaul.\n7) Be Nandung: dalam upacara menambak kuburan.\n8) Be Nandung: dalam upacara Cuci Lantai, Timbang Bidan.\n9) Be Nandung dalam menugal: menugal.\n10) Be Nandung dalam kegiatan Menampik Pulut: Menampik Pulut.\n11) Be Nandung dalam kegiatan Menumbuk padi lesung gelagaran.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\n Tradisi Nandung secara umum dikenal luas di hampir seluruh wilayah Kabupaten dan Kota di Provinsi Riau sebagai sastra lisan untuk menidurkan anak. Namun, terdapat titik-titik persebaran utama dan karakteristik khusus di berbagai wilayah Melayu Riau:\n\n1. Kabupaten Indragiri Hulu (Inhu): Menjadi basis utama tradisi Nandung, terutama di Kota Rengat dan sekitarnya (seperti Kampung Pulau, Kampung Besar Seberang, dan Rantau Mapesai). \n2. Suku Talang Mamak: Masyarakat adat di pedalaman Riau (seperti di Kecamatan Rakit Kulim dan Batang Gansal) juga memiliki tradisi Nandung yang sangat kuat, meskipun memiliki perbedaan teks dan konteks dibandingkan masyarakat Melayu pesisir.\n3. Wilayah Lain: Istilah Nandung juga ditemukan di berbagai kabupaten lain di Riau dengan penyebutan atau dialek yang menyesuaikan daerah setempat, seperti di wilayah pesisir (Rokan Hilir, Bengkalis) hingga daratan (Kampar, Pelalawan, Siak).\n\n Secara tradisi, isi dari Nandung di Riau mencerminkan identitas Melayu yang identik dengan Islam, di mana setiap nyanyian hampir selalu dibuka dengan kalimat tauhid dan selawat sebagai bentuk doa. Seiring berjalannya waktu, tradisi ini juga berfungsi sebagai media pendidikan karakter sejak dini melalui penyisipan pantun-pantun yang mengandung nilai moral, nasihat tentang budi pekerti, dan penghormatan kepada orang tua.\n\n<b>3. Nandung Menidurkan Anak</b>\n\nAnakku Kaseh Anakku Sayang\nDiam Di Rebung Jantung Dan Koneng\nObat Letak Pulang Di Ladang\nObat Letih Pulang Di Jalan\nTidurlah Anakku Sayang\n\nBandung Ketutu Bandung\nAnakku Bebandang Tidurlah Sayang\nJangan Menggadoh Emak Nak Keladang\n\nKalau 10 Katula Ketambang\nKapas Ke Pungguk Ka Batang\nHari Awak Tue Kapak Meranggas\nKemane Nak Tebang Lagi\n\nAnakku Kaseh Anakku Sayang\nDiam Di Rabung Jantung Nan Koneng\nObat Letak Pulang Di Ladang\nObat Latih Pulang Di Jalan\n\nTidolah Bulan\nAnakku Sayang\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/drive/folders/1UxRhx-UvuFC47L8I3Lrt1w1PjgeRk5ha')">
+            <h3>Nandung Talang Mamak</h3>
+            <p>Vanessa Stefany Purba</p>
+            <p>25051105078</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Nandung', '<b>Identitas Penutur</b>\nNama: Drs. Bakhtiar. MPd\nUsia: 63 Tahun\nJenis Kelamin: Laki-Laki\nAlamat: Rengat Seberang\nPekerjaan: Dosen STAI Madinatun Najah\nBeliau juga merupakan salah satu Pengurus Lembaga Adat Melayu Riau khususnya kabupaten Indragiri Hulu.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nNandung di Indragiri Hulu adalah tradisi lisan masyarakat Melayu yang sejak dulu digunakan untuk menidurkan anak sambil melantunkan syair atau pantun bernada lembut. Awalnya nandung berasal dari kebiasaan para ibu di rumah sebagai cara menyampaikan kasih sayang, nasihat, dan doa kepada anak.\n\nDalam perkembangannya, isi nandung tidak hanya untuk pengantar tidur, tetapi juga berisi ajaran agama, budi pekerti, dan petuah hidup. Karena diwariskan secara turun-temurun lewat lisan, asal-usul pastinya tidak tercatat secara pasti, tetapi nandung sudah lama menjadi bagian dari budaya Melayu di daerah Indragiri Hulu.\n\nSaat ini nandung juga sering ditampilkan dalam acara adat dan kegiatan budaya sebagai bentuk pelestarian tradisi daerah. Keberadaan nandung menunjukkan bahwa masyarakat Melayu tetap menjaga warisan budaya leluhur agar dikenal oleh generasi muda.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nPersebaran nandung terutama terdapat di Indragiri Hulu, khususnya di daerah Rengat dan beberapa wilayah Melayu lain di sekitarnya. Tradisi ini berkembang di lingkungan masyarakat Melayu karena diwariskan secara turun-temurun dari generasi tua kepada generasi muda, terutama dalam keluarga. Selain di lingkungan rumah tangga, nandung juga dikenal oleh masyarakat adat yang masih menjaga kuat tradisi lisan daerah.\n\nDalam tradisinya, nandung biasanya dilantunkan oleh ibu atau orang tua saat menidurkan anak dengan irama lembut dan syair yang penuh makna. Isi syairnya sering memuat nasihat, doa, ajaran agama, dan harapan baik untuk anak. Seiring perkembangan zaman, nandung tidak hanya dilakukan di rumah, tetapi juga ditampilkan dalam acara adat, penyambutan tamu, festival budaya, dan kegiatan pelestarian seni daerah. Hal ini membuat nandung tetap dikenal sebagai salah satu warisan budaya Melayu yang memiliki nilai pendidikan dan kebersamaan.\n\n<b>3. Karakteristik </b>\n\nKarakteristik nandung yang membedakannya dari sastra lisan lain terletak pada cara penyampaiannya yang dilagukan dengan nada lembut, tenang, dan berirama seperti senandung. Nandung tidak sekadar dibacakan seperti pantun atau syair biasa, tetapi dinyanyikan dengan intonasi tertentu sehingga menciptakan suasana menenangkan, terutama karena awalnya digunakan untuk menidurkan anak. Irama ini menjadi ciri khas utama yang membuat nandung mudah dikenali dalam tradisi lisan masyarakat Melayu.\n\nSelain bentuk penyampaiannya, isi nandung juga memiliki kekhasan karena banyak memuat nasihat, doa, ajaran agama, nilai moral, dan harapan orang tua terhadap anak. Bahasa yang dipakai sederhana dan mudah dipahami, tetapi mengandung makna mendalam tentang kehidupan. Berbeda dengan sastra lisan lain yang sering dipakai untuk hiburan atau upacara tertentu, nandung lebih dekat dengan kehidupan keluarga karena diwariskan secara lisan dari orang tua kepada anak di lingkungan rumah tangga masyarakat Melayu Indragiri Hulu.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1vNDO0sxGQY1WKBZdpNWVHkh8w9R6Eyc6/view?usp=drivesdk')">
+            <h3>Nandung</h3>
+            <p>Suci Fitri Yani</p>
+            <p>25051101962</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Doa Kasa', '<b>Identitas Penutur</b>\nNama: Halimah (Mak Lima)\nUsia: 67 Tahun\nJenis Kelamin: Perempuan\nAgama: Islam\nAlamat: Kec. Peranap, Kab. Indaragiri Hulu\n\n<b>1. Sejarah dan Asal Usul</b>\n\nSastra lisan Doa Kasa ini berasal dari inhu kec.pranap desa semelinang barat, Tradisi ini diturunkan secara turun-temurun dari orang tua ke anak, biasanya dalam lingkungan keluarga atau masyarakat tertentu yang masih menjaga adat.\n\nDoa Kasa digunakan sebagai bentuk doa atau perlindungan spiritual. Biasanya berkaitan dengan kepercayaan masyarakat terhadap kekuatan doa untuk keselamatan, keberkahan, dan perlindungan dari hal-hal yang tidak terlihat.\n\nDoa Kasa merupakan sastra lisan berbentuk doa/mantra yang diucapkan secara langsung (tidak tertulis). Bahasa yang digunakan adalah campuran Melayu lama dengan unsur religius Islam.\n\n<b> Contoh isi Doa Kasa:</b>\n\n Kasa minal makbuan\nAlam oruh alam deti\nBukak kan pintu darojat oruh nak lalu tanah mokah\nMokah bedinding dengan kakbah\nKakbah bedinding dengan cahayo\nKocik sepoti ayik sojuk sepoti timah\nSojuk menanti potak bumi\nAku membaco doa kasa\nIngin membuat membarkatkan\n<i>Lailahaillallah Muhammad Rasulullah</i>\n\nMaknanya secara umum adalah permohonan perlindungan, pembukaan jalan, dan keberkahan dari Allah SWT.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nTradisi ini masih ada, tetapi mulai jarang digunakan. Biasanya hanya diketahui oleh orang-orang tua seperti Mak Lima, dan belum tentu diwariskan ke generasi muda.Doa Kasa bisa ditemukan di inhu kec.pranap desa semelinang barat, terutama di daerah yang masih kuat adat Melayunya.\nDoa ini biasanya dilakukan saat: memohon keselamatan, saat akan melakukan perjalanan, saat menghadapi situasi tertentu (misalnya sakit atau gangguan), ritual kecil dalam kehidupan sehari-hari.\n\n<b>3. Karakteristik</b>\n\nSetiap daerah mungkin punya doa atau mantra serupa, tetapi Doa Kasa memiliki ciri khas pada susunan kata, logat Melayu Riau, dan penggunaan simbol religius seperti Kabah dan cahaya.Doa Kasa biasanya dibacakan secara langsung tanpa alat musik, dengan suara yang tenang dan penuh penghayatan.Doa kasa ini lebih digunakan dalam situasi pribadi atau kebutuhan spiritual tertentu, bukan pertunjukan.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/16bf4ALfi26-qYpARTxNuAEugGPy--gvp/view?usp=drivesdk')">
+            <h3>Doa Kasa</h3>
+            <p>Stevani Sitompul</p>
+            <p>25051207403</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Nandung', '<b>Identitas Penutur</b>\nNama: Hj. Khaira Zuita, S.pd\nTempat Tanggal Lahir: Lirik Kabupaten Indragiri Hulu, 30 Juni 1957\nUsia: 68 Tahun\nSeorang penutur dan penyanyi nandung di wilayah Rengat.\n\n<b>1.  Sejarah dan Asal Usul</b>\n\nNandung adalah sebuah nanyian yang berasal dari daerah Indragiri Hulu yaitu kota Rengat. Nandung merupakan nanyian pengantar tidur anak (bayi) yang dilantunkan oleh ibu atau emak- emak melayu diIndragiri hulu khususnya wilayah Rengat. Tidak hanya itu, nandung Indragiri juga dinyanyikan ketika seseorang mengungkapkan perasaan seperti kesedihan, kerinduan dan juga nasihat kehidupan. Isinya spesifik membahas tentang tauhid, pesan moral, nasihat dan juga Pendidikan.\n\nContoh  dari kalimat tauhid seperti  “<i>lailahaillallah</i>” Nyanyian berupa nandung ini tak memiliki arti hanya sebuah nyanyian,biasanya hanya dinandungkan sampai anak tertidur (Nandung Melayu Rengat). Nandung biasanya disampaikan dalam bentuk seperti syair atau pantun dengan irama yang sangat khas dan penuh penghayatan. Tradisi nandung ini diperkirakan ada sejak berdirinya kerajaan Indragiri Hulu pada tahun 1298 pada abad ke 13, yang dipimpin raja pertama yaitu raja Merlang I dan dilanjutkan oleh Narasinga 1 dan Narasinga II. Saat ini masih terdapat nandung dan masih menjadi tradisi masyarakat rengat dan sekitarnya.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nNandung Indragiri hulu Rengat tidak hanya tersebar di wilayah Rengat saja, tetapi di wilayah Kecamatan Peranap seperti desa Batu Rijal dan wilayah Kecamatan Sungai Lala seperti Pasir Kelampaian, pada wilayah rengat tersebar di seberang sungai rengat, tersebar di wilayah Pasir Kemilu dan juga tersebar di wilayah talang mamak. Persebaran ini juga menyangkut persebaran tradisi yang masih ada sejak saat ini.\n\n<b>3. Karakteristik Yang Membedakan Dengan Sastra Lisan Yang Lain</b>\n\nKarakteristik yang membedakan dengan sastra lisan yang lain terlihat pada cara menyanyikan atau menandungkan nya . Pada nandung rengat menggunakan nada yang khas, mendayu dayu dan juga menggunakan kalimat kalimat tauhid. nandung juga bersifat lebih bersifat operasional atau pribadi karena digunakan untuk ungkapan perasaan seperti kasih sayang Ibu kepada anaknya.\n\nPerbedaannya juga terlihat pada kegunaannya, nandung sering digunakan dalam situasi nyata atau kehidupan nyata seperti menidurkan anak, menjaga anak dan menjaga hasil ladang, berbeda dengan syair atau hikayat yang lebih sering untuk menceritakan sebuah kisah dan cerita. Nandung Rengat ini tidak menggunakan alat musik, tetapi ada yang menggunakan untuk menjadi inovasi seperti saat acara aqiqah, menggunakan alat musik seperti rebana. Nandung Rengat berisi tentang tauhid, pesan moral, pesan pendidikan, pesan akhlak budi pekerti dan juga nasihat.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1XYZL4Y0gwoRcTUU7v4uC4qLMsW7xYkEA/view?usp=drivesdk')">
+            <h3>Nandung</h3>
+            <p>Redelweis Aulian Dinanti</p>
+            <p>25051101456</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Nandung Emak-Emak', '<b>Identitas Penutur</b>\nNama: H. Mailiswinn S.Sos., M.Si.\nTempat Tanggal Lahir:  Rengat, 2 Mei 1959\nAlamat: Rengat, Indragiri Hulu\nAgama: Islam\nPekerjaan: Pensiunan ASN\n\n<b>1. Sejarah dan Asal Usul</b>\n\nNandung Emak-Emak merupakan tradisi ini berasal dari masyarakat Suku Talang Mamak di pedalaman Kabupaten Indragiri Hulu, Riau. Berbeda dengan nandung Melayu Rengat yang dominan untuk menidurkan bayi, nandung Talang Mamak muncul dari kebutuhan sosial untuk menjaga norma adat dalam pergaulan remaja.\n\nNandung Emak-Emak adalah sastra lisan berupa nyanyian spontan yang dilantunkan seorang Ibu sebagai kode atau pengawasan halus saat anak gadisnya menerima tamu pemuda (pacaran) di paran (teras/ruang depan rumah). Hingga sekarang nandung emak-emak masih ada, namun mulai langka. Saat ini lebih banyak ditemukan di desa-desa yang masih memegang teguh adat Langkah Lama, meski mulai tergeser dengan teknologi.\n\n<b>Nandung Masyarakat Talang Mamak</b>\n\nNandung Emak-Emak\n(Menunggu Anak Gadis Bertandang dengan Sibujang)\nSapu tangan nai geminai\nSiku kaluang\nKalau baru bersahabat handai\nMakan sirih sekapur surang\nBerakup tiang tanah bersarang\nDi ujung bumi\nSepantun kita berdua, siapa nan\nKasih menjunjungi\nKalau iya tikalkan kalik,\nMumbang jangan patahi\n\nKalau kita semua baek adat\nJangan dilangkahi\nKalau iya tikalkan kalik,\nMumbang jangan dipatahi\nKalau budi bahasa baek\nSemua adat dijunjungi\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nNandung Emak-Emak tersebar di kecamatan Batang Gansal, Rakit Kulim, Cenaku, dan Kelayang. Desa-desa seperti Desa Rantau Langsat dan Talang Jerinjing masih menjadi kantong tradisi ini. Nandung ini diturunkan secara oral (mulut ke mulut) di dalam lingkungan keluarga. Anak perempuan akan belajar secara alami dengan mendengarkan ibunya bernandung saat ia tumbuh dewasa.\n\n<b>3. Karakteristik</b>\n\nNandung ini berfungsi sebagai salah satu alat kontrol sosial. Jika nandung bayi bertujuan menidurkan, nandung emak emak ini bertujuan mengingatkan pemuda dan anak gadis agar tidak melanggar batas norma selama berinteraksi di rumah. Cara mendendangkannya dilantunkan tanpa alat musik dengan nada yang mendayu namun memiliki penekanan pada kata-kata tertentu agar terdengar oleh orang di paran. Biasanya berupa pantun spontan yang berisi nasihat menjaga kehormatan, sindiran halus kepada pemuda, atau doa agar si anak mendapatkan jodoh yang baik.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/11NLFhfls5pLlcuQx_fRRO9aIFMa24Iyl/view?usp=drivesdk ')">
+            <h3>Nandung Emak-Emak</h3>
+            <p>Qory Amelia Triana Putri</p>
+            <p>25051105236</p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Mutia Delilah</p>
+            <p>25051102461</p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Syair Surat Kapal', '<b>Identitas Penutur</b>\nNama: Bapak Master\nUsia: 54 Tahun\nAlamat: Kampung Pulau, Rengat\nSyair surat kapal sudah mulai langka di daerah Indragiri Hulu. Namun, bapak Master tetap menjadi penyair surat kapal sejak SMP hingga saat ini beliau sudah berusia 54 tahun. Karena orang tua bapak Master sudah mengajarkan menjadi penyair surat kapal lalu menekuninya, beliau pernah meraih harapan 3 pagelaran seni se-ASEAN pada tahun 1991 di Tanjung Pinang saat baru menikah. Beralamatkan di Kampung Pulau, Rengat dan sehari-harinya bekerja sebagai wiraswasta. Jika ada yang meminta untuk melantunkan surat kapal, beliau akan menjadi penuturnya.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nSurat kapal adalah syair yang menyampaikan cerita tentang pernikahan antara dua orang insan. Mulai dari nama kedua pengantin beserta dengan keluarga, lalu cerita pertemuan kedua pengantin, berlanjut dengan cara memulai hubungan serta akhirnya memutuskan untuk menikah, diakhiri dengan nasihat-nasihat serta harapan dan doa. Hal ini cukup bermakna bagi masyarakat khususnya kedua pengantin. Maksud dari “surat kapal” adalah menggambarkan kehidupan pernikahan yang tidak selamanya indah ada kalanya badai dan ombak menerjang. Syair surat kapal ini sudah dikenal sejak zaman pemerintahan raja di Indragiri Hulu, Kerajaan Indragiri. Bapak Master menyebutkan bahwa sejak zaman raja Indragiri terakhir (1912-1963) yang bernama Sultan Mahmudsyah (Tengku Mahmud) atau dikenal pula sebagai raja peduli syair surat kapal ini diketahui. Bapak Master juga menyampaikan asal surat kapal ini serumpun dengan melayu Malaysia. Penutur syair surat kapal adalah orang yang memahami adat dikarenakan tidak semua orang memahami syair ini dan pengucapan logatnya yang cukup sulit. Syair surat kapal menggunakan irama yang sesuai cerita baik sedih ataupun bahagia dengan iringan musik orgen. Syair surat kapal disebut syair panjang karena berisi 20-40 bait syair. Isi syair bergantung pada cerita kedua pengantin dan tentunya tidak akan pernah sama dengan pengantin lainnya. Oleh sebab itu, biasanya pihak keluarga akan menuliskan nama-nama pengantin dan keluarga serta cerita  pengantin hingga memutuskan untuk menikah, lalu penyair lah yang akan membuatkan syairnya.\n\n</b>2. Persebaran wilayah dan tradisi</b>\n\nSyair surat kapal lebih sering dituturkan di Indragiri Hulu tetapi sudah sangat berkurang. Di daerah lain juga ada tapi tidak banyak dan biasanya salah satu pengantin atau keduanya merupakan orang Melayu Indragiri Hulu, lebih tepatnya Rengat. Generasi muda zaman sekarang masih ada yang mempelajari syair ini, tetapi tidak banyak.\n\n<b>3. Karakteristik</b>\n\nKarakteristik dari syair surat kapal adalah khusus untuk pernikahan dan hanya terkenal di Indragiri Hulu khususnya daerah Rengat. Melalui surat kapal kedua pengantin mendapatkan nasihat serta gambaran dalam kehidupan berumah tangga yang kadang bisa terkena ombak. Surat kapal ini juga membuat kedua pengantin bernostalgia tentang kisah cinta mereka.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1gCJDJiqri2jzKr43sNdmlRI2DgETknB0/view?usp=drivesdk')">
+            <h3>Syair Surat Kapal</h3>
+            <p>Miaura Desvira</p>
+            <p>25051100277</p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Mandi Balimau', '<b>Identitas Penutur</b>\nNama: Halimah\nUsia: 67 Tahun\nJenis Kelamin: Perempuan\nAlamat: Kec. Peranap, Kab. Indragiri Hulu\nAgama: Islam\n\n<b>1. Sejarah dan Asal Usul</b>\n\nSejak dahulu, masyarakat sudah mengenal kebiasaan mandi menggunakan limau (jeruk) karena dipercaya dapat membersihkan dan menyegarkan tubuh. Setelah Islam berkembang di wilayah Melayu, tradisi ini diberi makna religius sebagai simbol membersihkan diri sebelum memasuki bulan penuh ibadah.\n\nMandi balimau kemudian dimaknai sebagai simbol penyucian diri, baik lahir maupun batin, sebelum memasuki bulan suci Ramadhan. Melalui tradisi ini, masyarakat tidak hanya membersihkan tubuh, tetapi juga mempersiapkan diri secara spiritual agar lebih siap menjalankan ibadah dengan hati yang bersih dan penuh keikhlasan.\n\nMandi Belimau adalah cara masyarakat Melayu menyucikan diri lahir dan batin serta mempererat kebersamaan sebelum menyambut bulan Ramadan.\n\nBiasanya dilakukan beramai ramai atau dengan keluarga di Sungai. Limau bisa juga di tambah dengan bunga.\n\n<b>2. Persebaran wilayah dan tradisi</b>\n\nTradisi mandi balimau banyak ditemukan di wilayah Provinsi Riau, seperti di daerah Indragiri Hulu, Kampar, Siak, Pelelawan . Selain itu, tradisi serupa juga dijumpai di beberapa wilayah Minangkabau di Sumatera Barat, dan Jambi meskipun dengan nama dan tata cara yang sedikit berbeda.\n\nTradisi mandi balimau masih tetap dilestarikan dan diwariskan kepada generasi berikutnya hingga saat ini. Namun, seiring perkembangan zaman, tradisi ini juga mulai dijadikan sebagai ajang wisata oleh masyarakat, bukan lagi menggunakan mantra tapi hanya mandi beramai-ramai di sungai dengan menggunakan limau.\n\n<b>3. Karakteristik</b>\n\nVariasi bacaan dalam doa, bahasa, dan cara pelaksanaan yg berbeda di tiap daerah. Tradisi mandi balimau dilakukan menjelang masuknya bulan suci Ramadhan, biasanya satu hari sebelum atau pada akhir bulan Sya’ban sebagai bentuk persiapan menyambut bulan Ramadhan.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1LJxooZEYO-vLvcbRybo2z7T0GIFC4R9z/view?usp=drivesdk\n\n<i>Bismillahirrohmanirrohim</i>\n\nLimau ku si limau kunci, terlotak pintu koto\n(limau ku si limau kunci, terletak di pinggir kampung)\n\nAku membaco limau kunci\n(Aku membaca limau kunci)\n\nCuci seroto  nyawo\n(Bersihkan lahir batin)\n\nCuci kulit, cuci daging, cuci tulang\n\nCuci sebatang tubuh aku ko\n(Cuci seluruh tubuh ku)\n\nCuci allah cuci Muhammad cuci bagindo Rasulullah\n(Membersihkan diri dengan menyebut Allah, Nabi Muhammad, dan Rasulullah)\n\n<i>Berkat kalimat lailahaillallah Muhammad Rasulullah</i>\n(Dengan berkah kalimat <i>Laa ilaaha illallah, Muhammadur Rasulullah</i> tiada Tuhan selain Allah, dan Muhammad adalah utusan Allah).')">
+            <h3>Mandi Balimau</h3>
+            <p>Intan Zudiarti</p>
+            <p>25051102557</p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Pantun Palang Pintu', '<b>Identitas Penutur</b>\nNama: Indrayani\nUsia: 52 Tahun\nAlamat: Beligan\n\nBeliau berasal dari keluarga yang memiliki latar belakang adat yang kuat, bahkan salah satu anggota keluarganya pernah menjadi kepala adat Melayu di daerah tersebut. Hal ini membuat beliau cukup akrab dengan berbagai tradisi, termasuk pantun palang pintu dalam pernikahan adat Melayu.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nMenurut Ibu Indrayani, tradisi pantun palang pintu dalam adat pernikahan Melayu sudah ada sejak lama dan berkembang dari kebiasaan masyarakat adat saat mempertemukan dua keluarga besar. Dalam prosesi pernikahan, perwakilan dari pihak pengantin laki-laki dan perempuan akan saling berbalas pantun sebagai bentuk komunikasi adat sebelum pihak laki-laki dipersilakan masuk. Pantun yang disampaikan biasanya berisi maksud kedatangan, permohonan izin, hingga penyampaian nasihat dengan bahasa yang halus dan penuh makna.\n\nBeliau menjelaskan bahwa tradisi ini diperkirakan telah berkembang sejak zaman dahulu, bahkan sejak masa prasejarah. Hal ini karena budaya lisan telah menjadi cara utama masyarakat dalam menyampaikan pesan sebelum adanya tulisan. Oleh karena itu, pantun palang pintu menjadi salah satu bentuk sastra lisan yang diwariskan secara turun-temurun.\n\nIbu Indrayani sendiri mengenal tradisi ini sejak kecil dari lingkungan keluarganya. Karena tumbuh dalam keluarga yang dekat dengan adat, beliau sering menyaksikan secara langsung proses pantun palang pintu dalam berbagai acara adat, terutama pernikahan. Hal ini membuatnya memahami bahwa tradisi ini bukan sekadar hiburan, tetapi juga bagian penting dari identitas budaya Melayu.\n\n<b>2. Penyebaran dan Tradisi Wilayah</b>\n\nDi wilayah Beligan, IndragiriHulu, tradisi pantun palang pintu masih sering digunakan, terutama dalam acara pernikahan dan beberapa upacara adat lainnya.  Dalam acara tersebut, pantun digunakan sebagai media komunikasi yang sopan, penuh simbol, dan sarat makna.\n\nTradisi pantun palang pintu dalam adat pernikahan Melayu tidak hanya berfungsi sebagai hiburan, tetapi juga memiliki makna yang penting dalam kehidupan masyarakat. Pantun digunakan sebagai media komunikasi antara pihak keluarga laki-laki dan perempuan sebelum pengantin laki-laki dipersilakan masuk. Melalui pantun tersebut, pihak laki-laki biasanya menyampaikan maksud kedatangan, permohonan izin, serta ungkapan sopan santun kepada keluarga perempuan. Sementara itu, pihak perempuan membalas pantun tersebut sebagai bentuk penghormatan sekaligus simbol penerimaan terhadap kedatangan rombongan pengantin laki-laki. Pantun palang pintu juga menjadi identitas budaya masyarakat Melayu karena mengandung nilai adat, tata krama, dan sopan santun yang diwariskan dari generasi ke generasi. Selain itu, pantun berfungsi sebagai sarana pendidikan budaya, penjelasan simbol adat, serta petunjuk tata cara dalam prosesi pernikahan Melayu.\n\nMeskipun perkembangan zaman membawa banyak perubahan, masyarakat Beligan masih mempertahankan tradisi ini. Ibu Indrayani menyebutkan bahwa di daerah tempat tinggalnya, adat pantun palang pintu masih digunakan, meskipun mungkin tidak sesering  dulu. Hal ini menunjukkan bahwa kesadaran masyarakat untuk menjaga budaya masih ada.\n\n<b>3. Ciri Khas Pantun</b>\n\nCiri khas dari pantun palang pintu dalam adat Melayu Riau terletak pada gaya penyampaiannya yang berirama, mengalun, dan penuh makna. Pantun yang digunakan tidak hanya indah secara bahasa, tetapi juga mengandung pesan moral, nasihat, serta nilai-nilai kehidupan yang penting bagi masyarakat.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1xLhx3as1_RpDMw-5I6c1SnEvlqC-EWI2/view?usp=drivesdk')">
+            <h3>Pantun Palang Pintu</h3>
+            <p>Hilda Wrdaturrosyidah</p>
+            <p></p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Nandung Talang Mamak', '<b>Identitas Penutur</b>\nNama: H. Mailiswin S.Sos., M.Si\nUsia: 66 Tahun\nTempat Tanggal Lahir: Rengat, 2 Mei 1959\nJenis Kelamin: Laki-Laki\n\n<b>1. Asal Usul dan Sejarah</b>\n\nTradisi lisan nandung sudah ada sejak berdirinya kerajaan Indragiri Hulu pada tahun 1298 pada masa itu adalah masa abad ke-13. Kerajaan Indragiri Hulu pada saat itu dipimpin oleh Raja pertama yaitu Raja Merlang I dan dilanjutkan oleh Raja Narasinga I dan Narasinga II ysng berkedudukan di Melaka. Tradisi nandung sudah dikenal pada masa Kerajaan Indragiri Hulu dan sudah menjadi tradisi masyarakat Melayu. Nandung pada awalnya dikenal sebagai sarana hiburan oleh para ibu-ibu yang menunggu kedatangan suami dengan bersenandung. Sebagian ibu-ibu ada yang bersenandung untuk menidurkan anaknya. Pernyataan tersebut adalah bukti bahwa tradisi lisan nandung sudah ada dari masa berdirinya Kerajaan Indragiri.\n\nTradisi lisan nandung menjadi salah satu budaya yang sangat berpengaruh dengan budaya umat islam. Nandung biasanya digunakan untuk menidurkan anak, biasanya nandung disampaikan dengan syair yang dilantunkan dengan berirama atau bersenandung. Pada awalnya handung hanyalah sebuah nyanyian atau lantunan kalimat, namun dengan berkembangnya zaman nandung mulai mulai ditambahkan beberapa kalimat-kalimat nasehat dengan ajaran Melayu yang membuat anak menjadi cepat tidur dalam buaian. Nandung memiliki makna seperti nasehar agama, tunjuk ajar, dan pendidikan.\n\nMasyarakat Indragiri Hulu telah mengajarkan nandung kepada generasi penerus. Proses penurunan nandung dilakukan secara lisan, karena para orang tua biasanya menidurkan anaknya sambil bersenandung. Irama nandung akan lebih enak didengar jika disenandungkan oleh orang-orang yang pandai menggunakan irama ketika membaca Al-Qur’an. Irama nandung yang dibacakan menggunakan seni me,baca Al-Qur’an akan terdengar syahdu dan dapat membuat orang terharu ketika mendengarnya.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nMasyarakat Talang Mamak disebut juga sebagai masyarakat suku anak dalam di Kabupaten Indragiri Hulu, Riau. Masyarakat Talang Mamak memiliki berbagai macam budaya yang masih dipertahankan secara lisan. Baik dari budaya melahirkan anak hingga bidaya menguburkan warga masyarakat Talang Mamak yang meninggal. Menyimak nandung oleh masyarakat Talang mamak, bukan hanya untuk menidurkan anak, namun mereka bersenandung di berbagai waktu dan acara lainnya. Seperti pada acara bayar kaul, menambak kuburan, menugal, dan acara adat lainnya.\n\nTradisi lisan nandung ini masih ditunkan ke generasi selanjutnya, bisanya diajarkan kepada anak cucu melalui lisan atau mengamatan. Tradisi lisan nandung ini muncul dari spontanitas ibu-ibu pada zaman dahulu yang dilakukan terus-menerus kemudian diajarkan kepada anak cucu hingga sekarang. Syair nandung biasanya tidak baku, karena syair nandung ini terbentuk dari spontanitas ibu-ibu yang menandungkannya. Meskipun berbeda-beda nandung tetap berisikan petuah agama, akhlak mulia, dan nasehat.\n\nBerikut lirik dari nandung “Talang Mamak”:\n\n<i>Tido, tido, tidolah sayang</i>\n<i>Pejamkan mate emak bedendang</i>\n<i>Anak ulan dibongkol kayu</i>\n<i>Anak belande main teropong</i>\n\n<i>Posodolan raje Melayu</i>\n<i>Kapal betunde perahu jongkong</i>\n<i>Main randin menjolang malam</i>\n<i>Kite beranggung hinggelah subuh</i>\n\n<i>Main randin menjolang malam</i>\n<i>Kite beranggung hinggelah subuh</i>\n<i>Anak ulan dibongkol kayu</i>\n<i>Anak belande main teropong</i>\n\n<i>Posodolan raje Melayu</i>\n<i>Kapal betunde perahu jongkong</i>\n<i>Kapal betunde perahu jongkong</i>\n\n<i>Tido, tido, tidolah sayang</i>\nPejamkan mate emak nak sembahyang</i>\n\nNandung Talang Mamak ini memiliki makna budaya yang mencerminkan rasa kasih sayang dari orang tua kepada buah hatinya. Selain itu nandung Talang Mamak ini juga memiliki makna kehidupan sosial masyarakat yang menjunjung kebersamaan, serta identitas budaya yang erat dengan alam dan kehidupan sungai. Selain itu, nandung juga memuat nilai religius yang menunjukkan pentingnya ibadah dan pendidikan moral dalam kehidupan sehari-hari. Pada lirik nandung tersebut terdapat kata “anak belande” hal itu dikarenakan nandung ini tercipta ketika belanda sudah memasuki tanah Indragiri Hulu. Tradisi nandung Talang Mamak ini tersebar di wilayah tempat tinggal masyarakat Talang Mamak di Kabupaten Indragiri Hulu, terutama pada Kecamatan Batang Gangsal, Batang Cenaku, Rakit Kulim, dan sebagian di Rengat Barat. Nandung tidak hanya sebuah media penghantar tidur anak, tetapi juga menjadi wadah pendidikan, penyampaian nilai moral, dan identitas masyarakat Talang Mamak.\n\n<b>3. Karakteristik</b>\n\nNandung Talang Mamak memiliki karakteristik yang unik dan berbeda dengan nandung Melayu pada umumnya. Perbedaan nandung Talang Mamak dengan nandung Melayu biasa terletak pada bahasa, isi lirik, fungsi, dan cara penyampaiannya. Nandung Talang Mamak menggunakan bahasa lokal dan memiliki ciri khas, yaitu nandung Talang Mamak bisanya berisi tentang kehidupan alam dan adat tradisional. Sedangkan nandung Melayu biasa hanya berisi nasihat religius. Selain itu, Selain itu, nandung Talang Mamak lebih erat kaitannya dengan kehidupan adat dan komunitas, sedangkan nandung Melayu lebih sering digunakan sebagai lagu pengantar tidur atau hiburan.\n\nNandung juga memiliki perbedaan dengan sastra lisan lainnya. Nandung bisanya dilantunkan dengan irama lembut oleh orang tua, terutama ibu, untuk menidurkan anak sambil menyampaikan doa, nasihat, dan kasih sayang. Berbeda dengan sastra lisan lain seperti cerita rakyat, pantun, atau mantra yang lebih sering digunakan untuk hiburan, penyampaian pesan adat, atau kegiatan upacara, nandung lebih bersifat personal dan berkaitan langsung dengan kehidupan keluarga sehari-hari. Selain itu nandung juga memiliki ciri pengulangan kata dan nada.\n\n<b>4.  Video Penutur</b>\nhttps://drive.google.com/drive/folders/1xwD2-0fSVFu2fOF6vdxAaAVGXfLF3z7P')">
+            <h3>Nandung Talang Mamak</h3>
+            <p>Hafizah Mufti Nabila</p>
+            <p>25051105082</p>
+        </div>
+         
+    </div>
+
+    <div class="navigation-buttons">
+        <a class="btn" href="index.html"><b>Kembali ke Halaman Utama</b></a>
+
+        <a class="btn" href="Kampar.html"><b>Halaman Selanjutnya</b></a>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalDesc"></div>
+
+<div class="slide-buttons" id="slideButtons" style="display:none;">
+    <button onclick="prevSlide()">⬅ Sebelumnya</button>
+    <button onclick="nextSlide()">Selanjutnya ➡</button>
+</div>
+        </div>
+    </div>
+
+ <script>
+
+function bukaModal(judul, deskripsi) {
+
+    const modalTitle = document.getElementById('modalTitle');
+
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalTitle.innerText = judul;
+
+    modalDesc.innerHTML =
+    deskripsi
+    .replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<br><br><a href="$1" target="_blank" style="color:#87cefa; font-size:18px; font-weight:bold; text-decoration:none;">🎥 Lihat Video Penutur</a>'
+    )
+    .replace(/\n/g,'<br>');
+
+    document.getElementById('myModal').style.display = 'block';
+
+     document.body.style.overflow = "hidden";
+}
+
+function tutupModal() {
+
+    document.getElementById('myModal').style.display = 'none';
+
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById('myModal');
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+
+    document
+    .getElementById("sideMenu")
+    .classList
+    .toggle("active");
+}
+
+</script>
+</body>
+</html>

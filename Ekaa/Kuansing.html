@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA LISAN</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+/* HAMBURGER MENU */
+.menu-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    font-size:30px;
+    color:white;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    background:rgba(255,255,255,0.15);
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+/* MENU DROPDOWN */
+/* MENU DROPDOWN */
+.side-menu{
+    position:fixed;
+
+    top:80px;
+    right:-260px;
+
+    width:230px;
+
+    max-height:80vh; /* BATAS TINGGI MENU */
+
+    overflow-y:auto; /* AGAR BISA DISCROLL */
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px 0 0 20px;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    z-index:9998;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.side-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.side-menu a:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+       .menu-container{
+    display:flex;
+    flex-wrap:wrap; /* agar berderet */
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+       /* CARD MATERI */
+.gambar{
+
+    width:220px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:25px;
+
+    padding:25px 18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    animation:zoomIn 0.8s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:170px;
+}
+
+
+.gambar h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.gambar p{
+    color:#f1f1f1;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.gambar:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+        /* TOMBOL MENU SEBELUMNYA */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    background:rgba(255,255,255,0.2);
+    color:white;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:rgba(255,255,255,0.35);
+    transform:scale(1.05);
+}
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:99999;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal.active ~ .menu-icon{
+    display:none;
+}
+
+      .modal-content{
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    margin:0;
+
+    padding:40px;
+
+    border-radius:0;
+
+    width:100%;
+
+    height:100vh;
+
+    text-align:justify;
+
+    position:relative;
+
+    border:none;
+
+    animation:popupZoom 0.4s ease;
+
+    overflow-y:auto;
+}
+
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .slide{
+    display:none;
+    animation:fadeSlide 0.4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.slide-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.slide-buttons button:hover{
+    background:rgba(255,255,255,0.35);
+}
+
+@keyframes fadeSlide{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+      .close{
+    position:fixed;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    color:red;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.close:hover{
+    color:darkred;
+    transform:scale(1.1);
+}
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        .modal-content{
+    padding:25px;
+}
+
+.modal-content p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* TEKS BERJALAN */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-top:1px solid rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+}
+
+/* TEKS BERJALAN SMOOTH */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:12px 0;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.running-text span{
+    display:inline-block;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    padding-left:100%;
+
+    animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media screen and (max-width: 768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:60px;
+    }
+
+    /* CARD BERJEJER */
+   .menu-container{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+}
+
+    .gambar{
+        width:100%;
+        max-width:100%;
+
+        min-height:150px;
+
+        padding:18px 12px;
+
+        border-radius:20px;
+    }
+
+    .gambar h3{
+        font-size:16px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    /* TOMBOL */
+    .navigation-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* MENU */
+    .side-menu{
+        width:200px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        padding:20px;
+    }
+
+    .modal-content h2{
+        font-size:22px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn{
+        top:15px;
+        left:15px;
+
+        padding:8px 14px;
+
+        font-size:13px;
+    }
+
+    /* ICON MENU */
+    .menu-icon{
+        width:45px;
+        height:45px;
+
+        font-size:26px;
+    }
+
+}
+
+/* =========================
+   HP KECIL
+========================= */
+/* =========================
+   RESPONSIVE HP
+========================= */
+@media screen and (max-width:768px){
+
+    .menu-container{
+        display:grid;
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:15px;
+    }
+
+    .gambar{
+        width:100%;
+        min-height:150px;
+
+        padding:18px 12px;
+    }
+
+    .gambar h3{
+        font-size:15px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+☰
+</div>
+
+    <div class="side-menu" id="sideMenu">
+
+    <h3 style="color:white; margin-bottom:15px;">
+        Kabupaten / Kota
+    </h3>
+
+    <a href="Bengkalis.html">📍 Bengkalis</a>
+
+    <a href="Dumai.html">📍 Dumai</a>
+
+    <a href="Siak.html">📍 Siak</a>
+
+    <a href="Kampar.html">📍 Kampar</a>
+
+    <a href="Pelalawan.html">📍 Pelalawan</a>
+
+    <a href="Inhil.html">📍 Indragiri Hilir</a>
+
+    <a href="Inhu.html">📍 Indragiri Hulu</a>
+
+    <a href="Rokan Hilir.html">📍 Rokan Hilir</a>
+
+    <a href="Rokan Hulu.html">📍 Rokan Hulu</a>
+
+    <a href="Kuansing.html">📍 Kuantan Singingi</a>
+
+    <a href="Meranti.html">📍 Kepulauan Meranti</a>
+
+</div>
+
+    <h1><b>KABUPATEN KUANTAN SINGINGI</b></h1>
+
+     <div class="running-text">
+    <span>Basatu Nogori Maju (Kuantan) Bersatu Untuk Memajukan Negeri</span>
+    </div>
+
+    <!-- TOMBOL MENU SEBELUMNYA -->
+    <a class="back-btn" href="Inhil.html">← Menu Sebelumnya</a>
+
+    <div class="menu-container">
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Smile', 'Deskripsi Gambar 15')">
+            <h3>Smile</h3>
+            <p>Deskripsi</p>
+        </div>
+         
+         
+    </div>
+
+    <div class="navigation-buttons">
+        <a class="btn" href="index.html"><b>Kembali ke Halaman Utama</b></a>
+
+        <a class="btn" href="Kuansing.html"><b>Halaman Selanjutnya</b></a>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalDesc"></div>
+
+<div class="slide-buttons" id="slideButtons" style="display:none;">
+    <button onclick="prevSlide()">⬅ Sebelumnya</button>
+    <button onclick="nextSlide()">Selanjutnya ➡</button>
+</div>
+        </div>
+    </div>
+
+ <script>
+
+function bukaModal(judul, deskripsi) {
+
+    const modalTitle = document.getElementById('modalTitle');
+
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalTitle.innerText = judul;
+
+    modalDesc.innerHTML =
+    deskripsi
+    .replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<br><br><a href="$1" target="_blank" style="color:#87cefa; font-size:18px; font-weight:bold; text-decoration:none;">🎥 Lihat Video Penutur</a>'
+    )
+    .replace(/\n/g,'<br>');
+
+    document.getElementById('myModal').style.display = 'block';
+
+     document.body.style.overflow = "hidden";
+}
+
+function tutupModal() {
+
+    document.getElementById('myModal').style.display = 'none';
+
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById('myModal');
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+
+    document
+    .getElementById("sideMenu")
+    .classList
+    .toggle("active");
+}
+
+</script>
+</body>
+</html>

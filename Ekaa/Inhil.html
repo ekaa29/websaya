@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA LISAN</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+/* HAMBURGER MENU */
+.menu-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    font-size:30px;
+    color:white;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    background:rgba(255,255,255,0.15);
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+/* MENU DROPDOWN */
+/* MENU DROPDOWN */
+.side-menu{
+    position:fixed;
+
+    top:80px;
+    right:-260px;
+
+    width:230px;
+
+    max-height:80vh; /* BATAS TINGGI MENU */
+
+    overflow-y:auto; /* AGAR BISA DISCROLL */
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px 0 0 20px;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    z-index:9998;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.side-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.side-menu a:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+       .menu-container{
+    display:flex;
+    flex-wrap:wrap; /* agar berderet */
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+       /* CARD MATERI */
+.gambar{
+
+    width:220px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:25px;
+
+    padding:25px 18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    animation:zoomIn 0.8s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:170px;
+}
+
+
+.gambar h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.gambar p{
+    color:#f1f1f1;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.gambar:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+        /* TOMBOL MENU SEBELUMNYA */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    background:rgba(255,255,255,0.2);
+    color:white;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:rgba(255,255,255,0.35);
+    transform:scale(1.05);
+}
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:99999;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal.active ~ .menu-icon{
+    display:none;
+}
+
+      .modal-content{
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    margin:0;
+
+    padding:40px;
+
+    border-radius:0;
+
+    width:100%;
+
+    height:100vh;
+
+    text-align:justify;
+
+    position:relative;
+
+    border:none;
+
+    animation:popupZoom 0.4s ease;
+
+    overflow-y:auto;
+}
+
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .slide{
+    display:none;
+    animation:fadeSlide 0.4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.slide-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.slide-buttons button:hover{
+    background:rgba(255,255,255,0.35);
+}
+
+@keyframes fadeSlide{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+      .close{
+    position:fixed;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    color:red;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.close:hover{
+    color:darkred;
+    transform:scale(1.1);
+}
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        .modal-content{
+    padding:25px;
+}
+
+.modal-content p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* TEKS BERJALAN */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-top:1px solid rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+}
+
+/* TEKS BERJALAN SMOOTH */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:12px 0;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.running-text span{
+    display:inline-block;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    padding-left:100%;
+
+    animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media screen and (max-width: 768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:60px;
+    }
+
+    /* CARD BERJEJER */
+   .menu-container{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+}
+
+    .gambar{
+        width:100%;
+        max-width:100%;
+
+        min-height:150px;
+
+        padding:18px 12px;
+
+        border-radius:20px;
+    }
+
+    .gambar h3{
+        font-size:16px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    /* TOMBOL */
+    .navigation-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* MENU */
+    .side-menu{
+        width:200px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        padding:20px;
+    }
+
+    .modal-content h2{
+        font-size:22px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn{
+        top:15px;
+        left:15px;
+
+        padding:8px 14px;
+
+        font-size:13px;
+    }
+
+    /* ICON MENU */
+    .menu-icon{
+        width:45px;
+        height:45px;
+
+        font-size:26px;
+    }
+
+}
+
+/* =========================
+   HP KECIL
+========================= */
+/* =========================
+   RESPONSIVE HP
+========================= */
+@media screen and (max-width:768px){
+
+    .menu-container{
+        display:grid;
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:15px;
+    }
+
+    .gambar{
+        width:100%;
+        min-height:150px;
+
+        padding:18px 12px;
+    }
+
+    .gambar h3{
+        font-size:15px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">
+☰
+</div>
+
+    <div class="side-menu" id="sideMenu">
+
+    <h3 style="color:white; margin-bottom:15px;">
+        Kabupaten / Kota
+    </h3>
+
+    <a href="Bengkalis.html">📍 Bengkalis</a>
+
+    <a href="Dumai.html">📍 Dumai</a>
+
+    <a href="Siak.html">📍 Siak</a>
+
+    <a href="Kampar.html">📍 Kampar</a>
+
+    <a href="Pelalawan.html">📍 Pelalawan</a>
+
+    <a href="Inhil.html">📍 Indragiri Hilir</a>
+
+    <a href="Inhu.html">📍 Indragiri Hulu</a>
+
+    <a href="Rokan Hilir.html">📍 Rokan Hilir</a>
+
+    <a href="Rokan Hulu.html">📍 Rokan Hulu</a>
+
+    <a href="Kuansing.html">📍 Kuantan Singingi</a>
+
+    <a href="Meranti.html">📍 Kepulauan Meranti</a>
+
+</div>
+
+    <h1><b>KABUPATEN INDRAGIRI HILIR</b></h1>
+
+     <div class="running-text">
+    <span>Negeri Hamparan Kelapa Dunia dan Negri Seribu Parit</span>
+    </div>
+
+    <!-- TOMBOL MENU SEBELUMNYA -->
+    <a class="back-btn" href="Dumai.html">← Menu Sebelumnya</a>
+
+    <div class="menu-container">
+
+        <div class="gambar" onclick="bukaModal('Syair Surat Kapal', '<b>Identitas Penutur</b>\nNama: Bapak Saharan\nUsia:61 Tahun\nTokoh Budaya dan Ahli Cagar Budaya Riau\n\n<b>1. Sejarah dan Asal Usul Syair Surat Kapal</b>\n\nSyair Surat Kapal di Indragiri Hilir (Inhil) merupakan varian lokal dari tradisi syair pernikahan Melayu Indragiri yang asalnya berkembang di Indragiri Hulu (Inhu). Syair Surat Kapal adalah genre sastra lisan Melayu Riau yang berbentuk syair pernikahan, lahir di kawasan Indragiri di sekitar hulu Sungai Indragiri (sekarang Indragiri Hulu – Inhu). Tradisi ini sudah ada sejak zaman Kerajaan Indragiri, sehingga usianya beratus-tahun dan diturunkan secara turun-temurun dari generasi ke generasi. Beliau (Bapak Saharan) menyatakan bahwa syair ini tidak diciptakan baru di Inhil, melainkan diadopsi dan kemudian disesuaikan dengan nuansa kehidupan masyarakat pesisir, sehingga muncul dengan gaya bahasa dan kiasan yang lebih dekat dengan laut, muara, perahu, dan nelayan. Sejarah munculnya di Inhil berawal dari penyebaran budaya Melayu Indragiri melalui perjalanan sungai, silaturahmi keluarga, serta perpindahan tokoh adat dan ulama antara Inhu dan Inhil, yang membuat syair ini diterima dan dipegang teguh sebagai bagian dari adat pernikahan Melayu di kawasan pesisir.\n\nSyair ini dikembangkan oleh tokoh adat dan ulama Melayu (datok) di Indragiri (termasuk Bapak Saharan) sebagai bentuk penyampaian nasihat pernikahan yang sarat nilai agama, hukum adat, dan kearifan lokal. Beliau menuturkan bahwa awalnya syair ditulis dalam tulisan Arab Melayu (Arab Gundul) sebelum kemudian dialihaksarakan ke huruf latin, sehingga keaslian aksara dan irama khas tetap menjadi ciri khas tradisi ini.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nBapak Saharan menjelaskan bahwa pusat utama tradisi Syair Surat Kapal adalah Kabupaten Indragiri Hulu (Inhu), khususnya di kawasan seperti Rengat, Peranap, dan desa-desa Melayu di sekitar hulu Sungai Indragiri. Kemudian, tradisi ini menyebar ke Indragiri Hilir (Inhil) dan hidup di desa-desa dan kampung Melayu pesisir yang berada di sepanjang muara Sungai Indragiri dan kawasan pantai Riau. Penyebaran Syair Surat Kapal di Inhil juga terbantu oleh migrasi sungai antara hulu dan hilir, sehingga kiai, datok, dan penghulu sering bergerak antara Inhu dan Inhil. Selain itu, adanya kesamaan etnis dan bahasa Melayu, membuat masyarakat Inhil bisa menerima dan menyesuaikan syair ini dengan dialek dan kiasan pesisir.\n\n Tradisi ini hidup dalam pernikahan adat Melayu Inhil, di mana syair dibacakan oleh penyair pada saat sesi resepsi, sebagai nasihat formal bagi pengantin dan keluarga. Fungsinya tetap sama seperti di Inhu yaitu sebagai nasihat pernikahan, pendidikan moral berbasis Islam dan adat, serta penjelasan makna simbol “surat kapal” yang berarti pernikahan sudah mendapat izin orang tua dan dilaksanakan menurut ketentuan agama dan adat. Beliau menambahkan, dalam beberapa desa Inhil simbol itu diperkuat dengan pemberian kapal kayu mini kepada mempelai, sehingga metafora “berlayar” dalam syair menjadi lebih nyata.\n\n<b>3. Karakteristik</b>\n\nBapak Saharan menuturkan bahwa karakteristik Syair Surat Kapal antara lain :\n\n1). Berupa syair panjang, terdiri dari banyak bait, masing-masing 4 baris.\n2). Pola persajakan relatif bebas, tetapi biasanya satu bait memiliki sajak sama (<i>aaaa</i>).\n3) Tiap syair dapat berisi puluhan bahkan ratusan bait, tergantung naskah dan kreativitas penyair/pengarang.\n4) Menggunakan bahasa Melayu Klasik dengan dialek setempat (Inhu atau Inhil).\n5) Isi utama menceritakan riwayat jodoh pasangan mulai dari perkenalan, lamaran, sampai menikah, lalu dilanjutkan dengan nasihat, doa, dan harapan untuk rumah tangga.\n6) Dalam upacara pernikahan, syair Surat Kapal dibacakan setelah pihak mempelai laki-laki sampai dirumah mempelai Perempuan setelah prosesi berarak.\n7) Menggunakan metafora laut dan kapal secara intens: jodoh dan rumah tangga digambarkan sebagai kapal yang berlayar mengarungi “samudera kehidupan” dengan ombak dan gelombang.\n8) Mengandung unsur humor sopan dan situasi ringan, sehingga tidak terasa kaku dan mudah diterima masyarakat.\n9) Gaya penuturan tergantung kemampuan penyair (bersifat bebas/tidak terikat).\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/drive/folders/1b-N3IIOYPZOnhOH4QZ3UN6mljjURRri_')">
+            <h3>Syair Surat Kapal</h3>
+            <p>Rosada Mutoharoh</p>
+            <p></p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Syair', '<b>Identitas Penutur</b>\nNama :Raja indra maulana\nUsia: 61 Tahun\nAlamat: JL. Tawal 1 C 16 Parit 3 Tembilahan Barat\nJabatan: Purnabakti kabid kebudayaan\n\n<b>1. Asal Usul Sastra Melayu Lisan Syair Di Tembilahan</b>\n\nSyair berasal dari tradisi sastra Melayu yang berkembang kuat sejak masa kerajaan-kerajaan Islam, terutama pada abad ke-16 hingga ke-19. Bentuk syair sendiri dipengaruhi oleh budaya Arab (kata “syair” berasal dari <i>shi‘r</i>), tetapi kemudian mengalami penyesuaian dengan budaya lokal Melayu.\n\nDi wilayah Riau, termasuk Tembilahan, syair berkembang karena daerah ini merupakan bagian dari pusat kebudayaan Melayu.\n\n<b>2. Persebaran wilayah</b>\n\nPersebaran syair di Indragiri Hilir terjadi seiring dengan perkembangan budaya Melayu dan penyebaran agama Islam di wilayah pesisir Riau. Tembilahan sebagai pusat pemerintahan dan perdagangan menjadi titik awal berkembangnya syair, kemudian menyebar ke berbagai kecamatan dan desa di sekitarnya.\n\nWilayah persebarannya meliputi daerah-daerah seperti, Tembilahan (pusat perkembangan), Tembilahan Hulu, Tempuling, Kempas, Rateh, Mandah, Kateman, Gaung dan Gaung Anak Serka\n\n<b>3. Faktor Penyebaran</b>\n\nBeberapa faktor yang menyebabkan syair menyebar luas di Inhil:\n\n<b>1) Jalur perdagangan sungai dan laut</b>\nMasyarakat pesisir yang mobilitasnya tinggi membawa tradisi syair ke daerah lain.\n<b>2) Dakwah Islam</b>\nSyair digunakan sebagai media penyampaian ajaran agama dan nasihat.\n<b>3) Tradisi lisan masyarakat</b>\nSyair mudah dihafal dan dilantunkan, sehingga cepat menyebar dari satu generasi ke generasi berikutnya.\n<b>4) Acara adat dan budaya</b>\nSyair sering digunakan dalam kegiatan seperti pernikahan, kenduri, dan tradisi.\n\n<b>4. Bentuk Persebaran</b>\n\nDi Inhil, syair berkembang dalam dua bentuk:\n\n<b>1) Lisan</b>\nDilantunkan dalam acara adat dan kehidupan sehari-hari.\n<b>2) Tulisan</b>\nMulai ditulis dalam naskah atau buku, meskipun lebih dominan secara lisan.\n\n<b>5. Karakteristik</b>\n\n1) Struktur bait\n2) Pola rima\n3) Bersifat naratif\n4) Mengandung nilai moral dan religius\n5) Disampaikan secara lisan (dilagukan)\n6) Menggunakana bahasa Melayu lokal\n7) Bersifat tradisional dan kolektif\n\n<b>6. Video Penutur</b>\nhttps://drive.google.com/file/d/1dPaEdrLxpQrrZrlzGkk5wNyzPeUjc_qc/view?usp=sharing')">
+            <h3>Syair</h3>
+            <p>Khairul Siswandi</p>
+            <p></p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Berdah', '<b>Identitas Penutur</b>\nNama: Khairul Amin\nTempat Tanggal Lahir: 18 Agustus 1975\nJenis Kelamin: Laki-laki\nAgama: Islam\nDomisili: Khairiah Mandah, Indragiri Hili\nPekerjaan: Wiraswasta\n\n<b>1. Sejarah dan Asal Usul</b>\nBerdah merupakan perpaduan antara sastra religius dan seni musik perkusi yang memiliki akar sejarah yang kuat.\n\n<b>Akar Tradisi</b>\nDiyakini berasal dari syair <i>Amuntazaa</i> karya Syekh Al Buskhairi dari Mesir. Syair ini awalnya digunakan untuk menyambut rombongan Rasulullah SAW di Mesir, sementara penggunaan Rebana sebagai pengiring identik dengan tradisi di Madinah.\n\n<b>Perjalanan Geografis</b>\nMenurut penuturan lisan, tradisi ini dibawa dari Daik (Lingga) kemudian masuk dan berkembang di wilayah Indragiri Hilir.\n\n<b>Latar Belakang</b>\nSeni islami ini berisi pembacaan riwayat Nabi Muhammad SAW yang dilantunkan secara bersenandung (irama yang indah).\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\nTradisi ini masih hidup dan memiliki tempat khusus dalam kehidupan sosial masyarakat Melayu Indragiri Hilir.\n\n<b>Wilayah Sebaran</b>\nMeliputi wilayah Daik hingga ke Kecamatan Mandah, Kabupaten Indragiri Hilir, Provinsi Riau.\n\n<b>Status Keberlanjutan</b>\nMasih aktif diturunkan dan diajarkan kepada generasi muda (anak cucu), tidak berhenti pada satu penutur saja\n\n<b>Konteks Pelaksanaan</b>\nBeredah tidak ditampilkan sembarangan, melainkan pada momen penting seperti: Malam besar pesta pernikahan, peringatan 1 Muharram (Tahun Baru Islam), dan acara khitanan.\n\n<b>3. Karakteristik</b>\nYang membuat Berdah di wilayah ini menonjol dibandingkan tradisi serupa lainnya:\n\n<b>1) Kekhasan</b>\nMemiliki ciri khas tersendiri yang tidak ditemukan kesamaannya dengan kampung atau daerah lain dalam hal gaya pembawaan.\n\n<b>2) Instrumen yang digunakan</b>\nMenggunakan Rebana berukuran besar (50 cm) menjadi identitas visual dan auditif yang utama.\n\n<b>3) Fungsi Sosial</b>\nMenjadi sarana dakwah sekaligus hiburan spiritual dalam upacara siklus hidup (pernikahan/khitanan) dan hari besar keagamaan.\n\n<b>4) Deskripsi Fisik & Pertunjukan</b>\nPenyaji: Umumnya dibawakan secara berkelompok oleh 7 hingga 15 orang.\nAlat Musik: Menggunakan Rebana khusus yang terbuat dari kulit kambing jantan dengan diameter sekitar 50 cm.\nPewarisan: Bersifat turun-temurun dari orang tua terdahulu hingga ke anak cucu saat ini.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1HDPSoA3M8u-eBHoN_VbP0ENoNt73HpwK/view?usp=drivesdk')">
+            <h3>Berdah</h3>
+            <p>Resi Cantika</p>
+            <p>25051207343</p>
+        </div>
+
+         <div class="gambar" onclick="bukaModal('Tawar Patek', '<b>Identitas Penutur</b>\nNama: Masrah\nTempat Tanggal Lahir: Sungai Luar, Tahun 1952\nUmur: 74 Tahun\nAlamat: Desa Lubuk Kempas Simpang Kateman, Kecamatan Pelangiran, Kabupaten Indragiri Hilir\n\n<b>1. Sejarah dan Asal-usul</b>\n\nTawar Patek adalah salah satu cara pengobatan tradisional yang digunakan untuk menyembuhkan penyakit mata yang disebut dengan nama patek. Pengobatan ini berasal dari masyarakat Suku Banjar yang tinggal di Kabupaten Indragiri Hilir, Provinsi Riau. Daerah tersebut dikenal sebagai salah satu tempat yang mayoritas penduduknya berasal dari Suku Banjar.\n\nMenurut penutur, dulu penyakit patek tidak punya cara pengobatan medis yang cukup baik. Jika tidak diatasi, penyakit itu bisa menyebabkan seseorang buta. Oleh karena itu, masyarakat mengembangkan cara pengobatan tradisional yang disebut Tawar Patek.\n\nSeiring berjalannya waktu, cara pengobatan ini semakin langka ditemukan. Penulis sendiri mengakui bahwa kali terakhir penulis melihat pengobatan itu adalah saat masih duduk di kelas dasar, ketika nenek penulis mengobati dengan cara tersebut. Penutur dalam penelitian ini adalah nenek penulis, sehingga informasi yang didapatkan berasal langsung dari orang yang menjalankan tradisi tersebut.\n\nSelain itu, mantra yang digunakan dalam pengobatan ini kini mulai langka karena semakin sedikit orang yang mempelajarinya.\n\n<b>2. Karakteristik</b>\n\nTawar Patek memiliki ciri khas yang membedakannya dari pengobatan tradisional lainnya. Salah satu karakteristik utama terletak pada penggunaan media berupa sebutir beras yang dipotong di atas tempurung kelapa yang telah dilubangi, tepat pada bagian urat kelapa.\n\nSelain itu, pengobatan ini juga ditandai dengan penggunaan mantra khusus, yaitu:\n<i>Tek kalalatek, alang dalam perahu, hilang kau patek, aku kade tahu.</i>\n\nMantra tersebut dibacakan sebelum proses pemotongan beras dilakukan. Setelah itu, dilanjutkan dengan doa penawar yang mengandung unsur religius, yaitu:\n<i>Allahumma sholli ‘ala sayyidina Muhammad, salim patek.</i>\n\n<b>3. Cara Pengobatan</b>\n\nProses pengobatan dilakukan dengan langkah-langkah sebagai berikut:\n1. Orang yang menderita sakit mata duduk di hadapan orang yang mengobati.\n2. Orang yang mengobati membaca mantra: “Tek kalalatek, alang dalam perahu, hilang kau patek, aku kade tahu.”\n3. Setelah itu, sebutir beras dipotong di atas tempurung kelapa yang berlubang, tepat pada bagian urat kelapa.\n4. Setelah pemotongan, dibacakan doa: “Allahumma sholli ‘ala sayyidina Muhammad, salim patek.”\n5. Proses tersebut diulang sebanyak tiga kali dalam satu kali pengobatan.\n6. Pengobatan dilakukan setiap sore selama tiga hari berturut-turut.\n\n<b>4. Persebaran dan Pewarisan</b>\n\nMenurut penutur, pengobatan Tawar Patek telah ada sejak zaman nenek moyang atau datuk mereka. Tradisi ini diwariskan secara turun-temurun dalam masyarakat Suku Banjar di Indragiri Hilir.\n\nPenutur sendiri memperoleh pengetahuan tentang pengobatan ini dari ayah dan datuknya. Proses pembelajaran tersebut dilakukan dengan penuh kesungguhan dan niat untuk belajar, bukan sekadar menerima secara pasif. Hal ini menunjukkan bahwa dalam tradisi ini, niat dan keseriusan belajar menjadi syarat penting dalam mewarisi ilmu pengobatan.\n\nSelain itu, proses pewarisan tidak dilakukan secara otomatis kepada keturunan. Ilmu ini hanya dapat diperoleh oleh orang yang benar-benar memiliki keinginan untuk belajar serta secara aktif bertanya kepada penutur. Apabila ilmu tersebut diajarkan tanpa adanya niat belajar dari penerima, maka diyakini pengobatan tersebut tidak akan memberikan hasil yang efektif atau tidak mujarab.\n\n<b>5. Penutup</b>\n\nTawar Patek merupakan salah satu bentuk sastra lisan yang tidak hanya berfungsi sebagai pengobatan tradisional, tetapi juga mencerminkan kepercayaan, nilai budaya, dan kearifan lokal masyarakat Suku Banjar di Indragiri Hilir. Keberadaan tradisi ini menunjukkan bahwa masyarakat memiliki cara tersendiri dalam menghadapi keterbatasan, khususnya dalam bidang kesehatan pada masa lalu. Oleh karena itu, penting untuk mendokumentasikan dan melestarikan sastra lisan seperti Tawar Patek agar tidak hilang seiring perkembangan zaman.\n\n<b>6. Video Penutur</b>\nVideo Wawancara\nhttps://drive.google.com/file/d/1bCzKufzo7-nkohrXr47LDTvIXsXDxPTb/view?usp=drivesdk\n Video Penutur\nhttps://drive.google.com/file/d/1A4aUIkbASIZwUDXmosvgqfxBioyQb-cp/view?usp=drivesdk')">
+            <h3>Tawar Patek</h3>
+            <p>Nuraini</p>
+            <p>25051100749</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Belawe', `
+
+<b>Identitas Penutur</b><br>
+Nama : Samsuri<br>
+Usia : 68 Tahun<br>
+Alamat : Parit Seman, Lahang Baru, Gaung, Indragiri Hilir, Riau.
+
+<br><br>
+
+<b>1. Sejarah dan Asal Usul Belawe (Hempang Pintu)</b>
+
+<br><br>
+
+<div style='display:flex; gap:60px; flex-wrap:wrap;'>
+
+    <div style='flex:1; min-width:250px; line-height:1.8;'>
+        Rukun islam lime perkare<br>
+        Naiklah haji rukun kelime<br>
+        Kami datang disuruh mike<br>
+        Pintu dikandang ape sebabnye
+        <br><br>
+
+        kuala gaung tanjung melayu,<br>
+        anak nelayan menangkap ikan,<br>
+        kalaulah begini adat melayu,<br>
+        berape banyak tolong jelaskan
+    </div>
+
+    <div style='flex:1; min-width:250px; line-height:1.8;'>
+        Rukun iman enam perkare<br>
+        Pergilah umrah tidak mengape<br>
+        Kami datang disuruh mike<br>
+        Pintu dikandang ape salahnye
+        <br><br>
+
+        Tanjung batu bumi melayu,<br>
+        tanjunglah datok dekat bekawan,<br>
+        tiga ratus ribu bayarlah dulu,<br>
+        barulah pintu kami bukakan.
+    </div>
+
+</div>
+
+Belawe merupakan tradisi melayu yang dilakukan dengan berbalas pantun, yang terdapat di Provinsi Riau, dan merupakan tradisi yang persebarannya di Riau, terutama di Kabupaten Indragiri Hilir. Adat melayu sudah seharusnya melaksanakan tradisi belawe, jika tidak belawe akan dianggap seperti bukan orang melayu menurut sejarah orang terdahulu. Tetapi belawe ini kadangkala menjadi pemicu terjadinya pertengkaran, dikarenakan tidak adanya kesepakatan atau komunikasi antara ajudan mempelai pria dan mempelai wanita. Pertikaian itu bermula karena belawe ini memerlukan uang untuk membuka kain penghalang atau yang disebut dengan pintu penghalang.\n\nMenurut mempelai pria mereka telah banyak mengeluarkan uang tetapi mereka harus mengeluarkan uang lagi untuk acara belawe ini, padahal seharusnya uang itu diperuntukkan untuk tukang masak bukan untuk pengantin wanita. Oleh karena itu untuk mengadakan belawe hendaknya ada perjanjian terlebih dahulu sebagaimana peraturan orang-orang terdahulu. Buat perjanjian kedua belah pihak untuk mengadakan belawe, kemudian berapa uang yang harus dibayarkan, misalnya ajudan mempelai wanita meminta Tiga Ratus Ribu, mempelai pria menginginkan membayar Dua Ratus Ribu, mempelai pria akan terus menawar hingga mencapai kesepakatan antara kedua belah pihak agar tidak terjadi pertengkaran.\n\nTujuan diadakannya belawe ini adalah untuk menguji kesediaan mempelai pria untuk meminang pengantin wanita. Selain itu juga sebagai bentuk hiburan untuk para tamu undangan. Belawe merupakan tradisi yang pertama saat resepsi pernikahan, karena tradisi ini dilakukan sebelum pengantin bersanding. Kemudian dilanjutkan dengan berdah, setelah itu mengantar penyerahan, sebelah mempelai pria akan menyerahkan hantaran kepada mempelai wanita. Lalu sebelah mempelai wanita menerima, setelah itu selesai untuk tradisi melayu.\n\n<b>Persebaran Wilayah dan Tradisi</b>\n\nBelawe suatu tradisi asli riau dan tersebar luas di Indragiri Hilir. Tradisi Belawe ini dianggap sebagai suatu tradisi yang harus dilaksanakan bagi orang melayu saat melaksanakan nikahan. Jika tradisi ini tidak dilaksanakan maka akan dianggap bukan orang melayu. Sampai saat ini belawe masih  dilaksanakan di pernikahan orang-orang melayu di kampung, khususnya Indragiri Hilir. Belawe ini bisa dikatakan tradisi yang turun temurun, tetapi bukan berdasarkan keturunan melainkan siapapun itu asalkan orang melayu. Siapapun dapat mempelajari belawe, tetapi untuk menjadi penuturnya hendaklah orang melayu asli.\n\n<b>3. Karakteristik </b>\n\n1) Dilaksanakan hanya di acara pernikahan\n2) Menggunakan bahasa Melayu\n3) Dilaksanakan dengan berbalas pantun\n4) Pantun berisikan tawar menawar yang diselingi candaan agar tamu undangan terhibur\n5) Dilaksanakan oleh 2 orang yang masing-masing mewakili pengantin pria dan pengantin wanita\n6) Dapat dilakukan oleh laki-laki maupun perempuan\n7) Dilaksanakan dengan terdapat kain penghalang antara pengantin pria dan pengantin wanita\n8) Kain penghalang akan dibuka setelah kesepakatan kedua belah pihak\n\n<b>4. Video Penutur</b>\nVideo Penuturhttps://drive.google.com/file/d/1dhryt6cL_rNjb7aqjDUISbeSb8_TLGFh/view?usp=drivesdk\nContoh Balawe di Pernikahan\nhttps://drive.google.com/file/d/1hPKaodR76rLeBAyq0tGaJIHyqmP7ffAB/view?usp=drivesdk`)">
+
+    <h3>Belawe</h3>
+    <p>Armaita Yusma</p>
+    <p>25051102753</p>
+
+</div>
+
+        <div class="gambar" onclick="bukaModal('Madihin', '<b>Identitas Penutur</b>\nNama: Muhammad Aldi, Abu Kasmir (nama panggung)\nUsia: 25 Tahun\nAsal: Kabupaten Indragiri Hilir, Kecamatan Tembilahan, Kelurahan Sungai Perak.\nAgama: Islam\nPeran: Pemain/penutur madihin di berbagai acara, seperti pernikahan.\n\nPenutur tersebut memang masih muda, saya sudah menanyakan apakah ada orang yang sudah tua bisa menuturkannya di sana, tetapi sudah pada meninggal. Makanya beliaulah lagi yang menuturkan madihin ini di kelurahannya pada berbagai acara, salah satunya banyak diundang ke acara pernikahan dan lain sebagainya.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nMadihin termasuk kesenian sastra lisan yang berasal dari masyarakat Banjar, Kalimantan Selatan. Masyarakat Banjar merantau dari Kalimantan Selatan ke Tembilahan, Indragiri Hilir, Riau. Peristiwa tersebut terjadi karena adanya perang saudara antara para pangeran kesultanan banjar untuk memperebutkan kekuasaan, orang yang kalah dari perang meninggalkan tanah tersebut. Meraka menetap dan seiring berjalannya waktu terbentuklah kampung-kampung di sana. Kemudian diwariskan turun-temurun sampai menjadi bagian dari budaya masyarakat Banjar di Inhil. Madihin masih ada sampai sekarang, terutama di daerah Tembilahan dan lingkungan masyarakat Banjar, walaupun keberadaannya mulai berkurang karena sedikitnya generasi penerusnya.\n\nMadihin berasal dari kata madaha, madaha yang mendahu mendahan artinya piji-pujian. Madihin bisa dipahami sebagai “seni bertutur dalam bentuk syair nasihat” atau puisi lama berisi pesan kehidupan. Madihin ialah sebuah seni bertutur yang masih ada sampai kini. Meskipun gaya dan cara membawanya berbeda-beda yang pasti ada satu kesamaan dalam madihin yang menggunakan alat tetabuhan dan isi syair atau pantun yang berakhiran sama. Madihin adalah syair religi yang berisi petuah namun kini madihin ini mulai dimainkan dalam bentuk hiburan seperti lawakan dan komedian, tetapi kembali kepada kita sebagai orang yang beragama. Artinya ada etika-etika yang jangan sampai kita lampaui, apalagi menyangkut pesan-pesan moral.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nPusat Madihin di Inhil ada di Tembilahan, lalu menyebar ke wilayah lain yang banyak dihuni masyarakat Banjar. Madihin diwariskan dalam keluarga Banjar juga belajar langsung dari penutur senior melalui sanggar seni ataupun dipakai di acara sekolah dan kegiatan agama. Tradisi ini masih diturunkan, tetapi tidak sebanyak dulu karena anak muda lebih sedikit yang belajar. Bukan hanya di satu keluarga, tetapi juga ada di keluarga Banjar lain dan desa/kelurahan lain di sekitar Tembilahan.\n\n<b>3. Karakteristik</b>\n\nPerbedaan maihin dengan sastra lisan maupun dengan madihin lainnya dapat dilihat dari gaya penuturnya, tema, bahasa, dan cara penyajiannya. Contohnya, ada penutur yang membawakan Madihin dengan gaya lucu dan penuh humor, sehingga penonton lebih terhibur, sedangkan penutur lain lebih menonjolkan nasihat agama atau kritik sosial. Dari segi tema, ada Madihin yang berisi nasihat pernikahan, ada yang membahas pendidikan, kehidupan sehari-hari, atau keadaan sosial masyarakat. Dari segi bahasa, sebagian menggunakan bahasa Banjar asli, sementara yang lain mencampurkannya dengan bahasa Indonesia atau Melayu setempat agar lebih mudah dipahami penonton.\n\nCara penyajiannya juga berbeda, ada yang dibawakan secara tunggal, berpasangan, atau saling berbalas syair, tetapi tetap disampaikan secara spontan dengan iringan tarbang sesuai dengan pengetahuan dan pengalaman yang pemadihin punya. Karena itulah setiap pamadihinan menuturkan Madihin dengan cara yang berbeda-beda karena dipengaruhi oleh pengalaman hidup, wawasan, kemampuan merangkai kata secara spontan, serta kebiasaan berbahasa yang dimilikinya. Semakin luas pengalaman dan pengetahuannya, biasanya semakin kaya humor, nasihat, dan sindiran yang dapat disampaikan. Namun, ada juga bagian yang tetap sama, yaitu bentuknya sebagai syair lisan yang didendangkan, memakai iringan tarbang, serta berisi pesan moral atau hiburan sesuai acara.\n\n<b>5. Video Penutur</b>\nhttps://drive.google.com/file/d/1l4XllHuRDnozoFlhOMrE0EkgBGIhdaOX/view?usp=drivesdk')">
+            <h3>Madihin</h3>
+            <p>Aqila Baqis</p>
+            <p>25051102732</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Madihin', '<b>Identitas Penutur</b>\nNama: Zainudin\nUsia: 80 Tahun\nAsal:  Kabupaten Indragiri Hilir, Kecamatan Tembilahan Hulu.\n\nKeahlian Bapak Zainudin dalam bermadihin tidak datang begitu saja. Beliau menceritakan bahwa kemampuannya ini berakar dari ketekunannya mengikuti sang guru di daerah Sungai Beringin. Setiap hari Minggu, Bapak Zainudin setia mengantar gurunya pergi untuk mengajar orang lain bermadihin. Di momen-momen itulah—sambil memperhatikan dan mendengarkan gurunya beraksi—ia menyerap ilmu, teknik, dan rima-rima Madihin hingga akhirnya mahir dengan sendirinya.\n\nNamun, ada sedikit ganjalan di hati beliau terkait regenerasi di keluarga sendiri. Meski Bapak Zainudin dikaruniai tujuh orang anak, hingga saat ini belum ada satu pun dari mereka yang mengikuti jejaknya sebagai pemadihin. Hal ini menjadi catatan tersendiri bahwa bakat dan minat dalam seni tradisional memang tidak bisa dipaksakan, meski sang ayah adalah seorang tokoh seni yang cukup dikenal.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nKabupaten Indragiri Hilir dikenal sebagai daerah yang kaya akan akulturasi budaya, salah satunya melalui kehadiran suku Banjar yang telah menetap lama di wilayah ini. Bersama perpindahan penduduk tersebut, terbawa pula sebuah kesenian tutur yang unik dan penuh makna, yaitu Madihin. Di Inhil, khususnya di daerah seperti Tembilahan dan sekitarnya, Madihin bukan sekadar hiburan, melainkan bagian dari identitas masyarakat yang masih terjaga hingga kini.\n\nNamun, seiring berjalannya waktu dan masuknya pengaruh budaya modern, tantangan untuk melestarikan Madihin semakin besar. Generasi muda saat ini mulai jarang yang mengenal atau tertarik untuk mempelajari teknik mamadihin (bermain madihin). Jika tidak didokumentasikan dan dipelajari kembali, dikhawatirkan seni tutur yang sarat akan nilai-nilai luhur ini akan perlahan memudar dari bumi Indragiri.\n\n<b>2. Ciri Khas Madihin</b>\n\nMadihin di Indragiri Hilir memiliki ciri khas tersendiri dalam penyampaiannya. Kesenian ini memadukan pantun, syair, dan humor yang disampaikan secara spontan dengan iringan pukulan gendang atau terbang. Fungsinya pun sangat luas; mulai dari sarana dakwah, nasihat perkawinan, hingga kritik sosial yang dibungkus dengan cara yang menghibur agar mudah diterima oleh masyarakat.\n\n<b>3. Perjalanan Kesenian Madihin di Indragiri Hilir</b>\n\nPerjalanan kesenian Madihin hingga sampai ke telinga masyarakat Indragiri Hilir (Inhil) memiliki cerita yang menarik. Berdasarkan keterangan dari Bapak Ridwan Syafi’ali, informasi berharga ini didapatkan langsung dari penuturan Bapak Zainudin, salah satu tokoh yang mendalami seni ini.Madihin sejatinya diperkenalkan oleh masyarakat suku Banjar. Namun, seiring berjalannya waktu, kesenian ini mulai menetap dan berkembang di Inhil dengan sentuhan gaya lokal yang khas, menyesuaikan dengan karakter masyarakat setempat. Akar madihin di Inhil tidak lepas dari jasa dua sosok seniman legendaris, yaitu almarhum Kadir dan almarhum Aban. Keduanya dikenal sebagai pelopor yang mempopulerkan seni lisan ini di wilayah Inhil pada masa lalu. Meski tahun pastinya sulit diingat kembali, Bapak Zainudin memperkirakan bahwa Madihin sudah mulai dikenal luas saat beliau masih berusia sekitar 18 hingga 20 tahun.Sejak masa itulah, Bapak Zainudin merasa terpikat dan mulai mempelajari Madihin secara otodidak. Beliau tekun mendalami teknik merangkai syair dan pukulan gendangnya, berbalas pantun, mengarang cerita, dan pelawak. Salah satu daya tarik utama yang membuat Madihin begitu dicintai masyarakat adalah unsur humor atau lawakannya. Bapak Zainudin menyebutkan bahwa bagian melawak inilah yang sebenarnya menjadi magnet paling kuat untuk mendatangkan orang ramai.\n\n<b>4. Video Penutur</b>\n\nUntuk melihat lebih dekat bagaimana kepiawaian Bapak Zainudin dalam ber-Madihin, penampilan beliau dapat disaksikan melalui tautan video berikut:\nhttps://drive.google.com/file/d/1zN21yU8BuVSROQKWPrixsNt5RF7eMhw8/view?usp=drivesdk')">
+            <h3>Madihin</h3>
+            <p>Amanda Wulandari</p>
+            <p>25051105085</p>
+        </div>
+    </div>
+
+    <div class="navigation-buttons">
+        <a class="btn" href="index.html"><b>Kembali ke Halaman Utama</b></a>
+
+        <a class="btn" href="Inhu.html"><b>Halaman Selanjutnya</b></a>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalDesc"></div>
+
+<div class="slide-buttons" id="slideButtons" style="display:none;">
+    <button onclick="prevSlide()">⬅ Sebelumnya</button>
+    <button onclick="nextSlide()">Selanjutnya ➡</button>
+</div>
+        </div>
+    </div>
+
+ <script>
+
+function bukaModal(judul, deskripsi) {
+
+    const modalTitle = document.getElementById('modalTitle');
+
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalTitle.innerText = judul;
+
+    modalDesc.innerHTML =
+    deskripsi
+    .replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<br><br><a href="$1" target="_blank" style="color:#87cefa; font-size:18px; font-weight:bold; text-decoration:none;">🎥 Lihat Video Penutur</a>'
+    )
+    .replace(/\n/g,'<br>');
+
+    document.getElementById('myModal').style.display = 'block';
+
+     document.body.style.overflow = "hidden";
+}
+
+function tutupModal() {
+
+    document.getElementById('myModal').style.display = 'none';
+
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById('myModal');
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+
+    document
+    .getElementById("sideMenu")
+    .classList
+    .toggle("active");
+}
+
+</script>
+</body>
+</html>

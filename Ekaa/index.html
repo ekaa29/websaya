@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Galeri</title>
+
+    <!-- ✅ WAJIB AGAR RESPONSIF -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+           background:
+linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+        }
+        /* EFEK CAHAYA BERGERAK */
+.light{
+    position:fixed;
+    top:-50%;
+    left:-50%;
+
+    width:200%;
+    height:200%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,215,0,0.15) 0%,
+    transparent 60%);
+
+    animation:putarLight 12s linear infinite;
+
+    z-index:-2;
+}
+
+/* ORNAMEN MELAYU */
+.ornamen{
+    position:absolute;
+    top:30px;
+    width:100%;
+    text-align:center;
+
+    font-size:35px;
+    letter-spacing:15px;
+
+    color:rgba(255,215,0,0.9);
+
+    animation:kelapKelip 3s ease-in-out infinite;
+}
+
+/* PARTIKEL */
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.particles span{
+    position:absolute;
+    bottom:-100px;
+
+    background:rgba(255,255,255,0.25);
+
+    border-radius:50%;
+
+    animation:naik 18s linear infinite;
+}
+
+/* ukuran random */
+.particles span:nth-child(1){
+    left:10%;
+    width:15px;
+    height:15px;
+    animation-duration:10s;
+}
+
+.particles span:nth-child(2){
+    left:25%;
+    width:30px;
+    height:30px;
+    animation-duration:15s;
+}
+
+.particles span:nth-child(3){
+    left:40%;
+    width:20px;
+    height:20px;
+    animation-duration:12s;
+}
+
+.particles span:nth-child(4){
+    left:60%;
+    width:35px;
+    height:35px;
+    animation-duration:20s;
+}
+
+.particles span:nth-child(5){
+    left:75%;
+    width:18px;
+    height:18px;
+    animation-duration:13s;
+}
+
+.particles span:nth-child(6){
+    left:85%;
+    width:28px;
+    height:28px;
+    animation-duration:17s;
+}
+
+.particles span:nth-child(7){
+    left:50%;
+    width:12px;
+    height:12px;
+    animation-duration:9s;
+}
+
+/* NOT MUSIK */
+.music{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.music span{
+    position:absolute;
+    bottom:-50px;
+
+    color:rgba(255,255,255,0.7);
+
+    font-size:35px;
+
+    animation:musik 15s linear infinite;
+}
+
+.music span:nth-child(1){
+    left:15%;
+}
+
+.music span:nth-child(2){
+    left:40%;
+    animation-duration:18s;
+}
+
+.music span:nth-child(3){
+    left:65%;
+    animation-duration:12s;
+}
+
+.music span:nth-child(4){
+    left:85%;
+    animation-duration:20s;
+}
+
+/* ANIMASI */
+@keyframes naik{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes musik{
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+@keyframes kelapKelip{
+    0%{
+        text-shadow:0 0 5px gold;
+    }
+
+    50%{
+        text-shadow:
+        0 0 20px gold,
+        0 0 35px orange;
+    }
+
+    100%{
+        text-shadow:0 0 5px gold;
+    }
+}
+
+@keyframes putarLight{
+    0%{
+        transform:rotate(0deg);
+    }
+
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+        .container {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.25);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+
+            width: 100%;
+            max-width: 350px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.4);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #f1f1f1;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            padding: 10px 22px;
+            border-radius: 999px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            display: inline-block;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .credit {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* ✅ KHUSUS HP */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container img {
+                width: 90px;
+                height: 90px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+
+            .credit {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- EFEK CAHAYA -->
+<div class="light"></div>
+
+<!-- ORNAMEN MELAYU -->
+<div class="ornamen">
+    ❈ ✦ ❈ ✦ ❈
+</div>
+
+<!-- PARTIKEL -->
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- NOT MUSIK -->
+<div class="music">
+    <span>♪</span>
+    <span>♫</span>
+    <span>♬</span>
+    <span>♪</span>
+</div>
+
+    <div class="container">
+        <img src="gambar/download.jpg" alt="Logo">
+        <h1>Welcome To My Website</h1>
+        <p>Klik tombol di bawah untuk melihat galeri gambar</p>
+        <a class="btn" href="menuawal.html">Masuk</a>
+
+        <div class="credit">
+            Project Eka Pujiastuti - 12 Teknik Informatika <br>
+            (Pengembangan Perangkat Lunak dan Gim)
+        </div>
+    </div>
+
+</body>
+</html>

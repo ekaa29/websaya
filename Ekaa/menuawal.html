@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Materi</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+        .menu-container{
+    display:flex;
+    flex-direction:column; /* membuat card ke bawah */
+    align-items:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+        .gambar{
+            width:90%;
+            max-width:700px;
+
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(15px);
+
+            border-radius:20px;
+
+            padding:30px;
+
+            border:1px solid rgba(255,255,255,0.3);
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+
+            cursor:pointer;
+
+            transition:0.4s ease;
+
+            animation:zoomIn 0.8s ease;
+        }
+
+        .gambar:hover{
+            transform:translateY(-5px);
+
+            box-shadow:0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .gambar h3{
+            color:white;
+            margin-bottom:15px;
+            font-size:28px;
+        }
+
+        .gambar p{
+            color:#f1f1f1;
+            line-height:1.8;
+            font-size:16px;
+            text-align:justify;
+        }
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:10;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal-content{
+            background:rgba(255,255,255,0.15);
+
+            backdrop-filter:blur(20px);
+
+            color:white;
+
+            margin:8% auto;
+
+            padding:30px;
+
+            border-radius:20px;
+
+            width:90%;
+            max-width:700px;
+
+            text-align:justify;
+
+            position:relative;
+
+            border:1px solid rgba(255,255,255,0.3);
+
+            animation:popupZoom 0.4s ease;
+        }
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .close{
+            position:absolute;
+
+            top:10px;
+            right:20px;
+
+            font-size:25px;
+
+            color:white;
+
+            cursor:pointer;
+        }
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        @media(max-width:480px){
+
+            h1{
+                font-size:24px;
+            }
+
+            .gambar{
+                padding:20px;
+            }
+
+            .gambar h3{
+                font-size:22px;
+            }
+
+            .gambar p{
+                font-size:14px;
+            }
+
+            .btn{
+                width:100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1><b>SASTRA LISAN MELAYU RIAU</b></h1>
+
+    <div class="menu-container">
+
+        <div class="gambar" onclick="bukaModal(
+'Sastra Melayu',
+'Sastra Melayu atau Kesusastraan Melayu adalah sastra yang hidup dan berkembang di kawasan Melayu. Sastra Melayu mengalami perkembangan dan penciptaan yang saling mempengaruhi antara satu periode dengan periode yang lain. Situasi masyarakat pada jaman sebelum Hindu, jaman Hindu, jaman peralihan dari Hindu ke Islam, dan jaman Islam, berpengaruh kuat pada hasil-hasil karya sastra Melayu. Terjadi hubungan yang erat antara tahap perkembangan, kehadiran genre, dan faktor lain di luar karya sastra. Sastra Melayu berkembang pesat pada jaman Islam dan sesudahnya, karena tema-tema yang diangkat seputar kehidupan masyarakat Melayu, meskipun beberapa ada pengaruh asing. Sebelum jaman Islam, konteks penceritaannya lebih berorientasi ke wilayah di luar Melayu, yaitu India dengan latar belakang kebudayaan Hindu.')">
+
+    <h3>Sastra Melayu</h3>
+
+    <p>
+        Sastra Melayu berkembang dari masa ke masa dan dipengaruhi oleh budaya Hindu serta Islam.
+    </p>
+
+</div>
+
+<div class="gambar" onclick="bukaModal(
+'Sastra Lisan',
+'Sastra lisan adalah bagian dari tradisi yang berkembang di tengah rakyat jelata yang menggunakan bahasa sebagai media utama. Sastra lisan ini lebih dulu muncul dan berkembang di masyarakat daripada sastra tulis. Dalam kehidupan sehari-hari, jenis sastra ini biasanya dituturkan oleh seorang ibu kepada anaknya, seorang tukang cerita pada para pendengarnya, guru pada para muridnya, ataupun antar sesama anggota masyarakat. Untuk menjaga kelangsungan sastra lisan ini, warga masyarakat mewariskannya secara turun temurun dari generasi ke generasi. Sastra lisan sering juga disebut sebagai sastra rakyat, karena muncul dan berkembang di tengah kehidupan rakyat biasa. Sastra lisan ini dituturkan, didengarkan dan dihayati secara bersama-sama pada peristiwa tertentu, dengan maksud dan tujuan tertentu pula. Peristiwa-peristiwa tersebut antara lain berkaitan dengan upacara perkawinan, upacara menanam dan menuai padi, kelahiran bayi dan upacara yang bertujuan magis. Sastra lisan sangat digemari oleh warga masyarakat dan biasanya didengarkan bersama-sama karena mengandung gagasan, pikiran, ajaran dan harapan masyarakat.')">
+
+    <h3>Sastra Lisan</h3>
+
+    <p>
+        Tradisi sastra yang diwariskan secara turun-temurun melalui tuturan lisan masyarakat.
+    </p>
+
+</div>
+
+    </div>
+
+    <div class="navigation-buttons">
+
+        <a class="btn" href="index.html">
+            <b>Kembali</b>
+        </a>
+
+        <a class="btn" href="Bengkalis.html">
+            <b>Selanjutnya</b>
+        </a>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close" onclick="tutupModal()">&times;</span>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDesc"></p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function bukaModal(judul, deskripsi){
+
+            document.getElementById('modalTitle').innerText = judul;
+
+            document.getElementById('modalDesc').innerText = deskripsi;
+
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        function tutupModal(){
+
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        window.onclick = function(event){
+
+            const modal = document.getElementById('myModal');
+
+            if(event.target === modal){
+
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA LISAN</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+/* HAMBURGER MENU */
+.menu-icon{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    font-size:30px;
+    color:white;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    background:rgba(255,255,255,0.15);
+
+    width:50px;
+    height:50px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+/* MENU DROPDOWN */
+/* MENU DROPDOWN */
+.side-menu{
+    position:fixed;
+
+    top:80px;
+    right:-260px;
+
+    width:230px;
+
+    max-height:80vh; /* BATAS TINGGI MENU */
+
+    overflow-y:auto; /* AGAR BISA DISCROLL */
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px 0 0 20px;
+
+    padding:20px;
+
+    transition:0.4s ease;
+
+    z-index:9998;
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.side-menu::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.1);
+
+    transition:0.3s;
+}
+
+.side-menu a:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(5px);
+}
+
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('gambarindex/Malay Riau Batik Songket, Weaving Corak Motif Pucuk Rebung, Melayu patterns red silky background, Traditional Classic handwoven black with gold threads vector.jpeg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            min-height:100vh;
+
+            padding:20px;
+            text-align:center;
+            overflow-x:hidden;
+        }
+
+        h1{
+            color:white;
+            margin-top:10px;
+            animation:slideDown 1s ease-out;
+            font-size:35px;
+        }
+
+       .menu-container{
+    display:flex;
+    flex-wrap:wrap; /* agar berderet */
+    justify-content:center;
+    gap:25px;
+    margin-top:30px;
+}
+
+        /* CARD MATERI */
+       /* CARD MATERI */
+.gambar{
+
+    width:220px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:25px;
+
+    padding:25px 18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    animation:zoomIn 0.8s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    min-height:170px;
+}
+
+
+.gambar h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.gambar p{
+    color:#f1f1f1;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.gambar:hover{
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+        @keyframes zoomIn{
+            from{
+                opacity:0;
+                transform:scale(0.8);
+            }
+            to{
+                opacity:1;
+                transform:scale(1);
+            }
+        }
+
+        @keyframes slideDown{
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* TOMBOL */
+        .navigation-buttons{
+            margin-top:40px;
+
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            background:rgba(255,255,255,0.2);
+
+            color:white;
+
+            padding:12px 22px;
+
+            text-decoration:none;
+
+            border-radius:999px;
+
+            border:2px solid rgba(255,255,255,0.4);
+
+            transition:0.3s ease;
+        }
+
+        .btn:hover{
+            background:rgba(255,255,255,0.35);
+            transform:scale(1.05);
+        }
+        /* TOMBOL MENU SEBELUMNYA */
+.back-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    background:rgba(255,255,255,0.2);
+    color:white;
+
+    padding:10px 18px;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,0.4);
+
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:rgba(255,255,255,0.35);
+    transform:scale(1.05);
+}
+
+        /* MODAL */
+        .modal{
+            display:none;
+
+            position:fixed;
+
+            z-index:99999;
+
+            left:0;
+            top:0;
+
+            width:100%;
+            height:100%;
+
+            background-color:rgba(0,0,0,0.6);
+
+            animation:fadeInBackground 0.4s ease;
+        }
+
+        .modal.active ~ .menu-icon{
+    display:none;
+}
+
+      .modal-content{
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    color:white;
+
+    margin:0;
+
+    padding:40px;
+
+    border-radius:0;
+
+    width:100%;
+
+    height:100vh;
+
+    text-align:justify;
+
+    position:relative;
+
+    border:none;
+
+    animation:popupZoom 0.4s ease;
+
+    overflow-y:auto;
+}
+
+.modal-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.5);
+    border-radius:10px;
+}
+
+.modal-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+        .modal-content h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .modal-content p{
+            line-height:1.9;
+            font-size:15px;
+        }
+
+        .slide{
+    display:none;
+    animation:fadeSlide 0.4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.slide-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.2);
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.slide-buttons button:hover{
+    background:rgba(255,255,255,0.35);
+}
+
+@keyframes fadeSlide{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+      .close{
+    position:fixed;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    color:red;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.close:hover{
+    color:darkred;
+    transform:scale(1.1);
+}
+
+        .close:hover{
+            opacity:0.7;
+        }
+
+        @keyframes popupZoom{
+            from{
+                transform:scale(0.5);
+                opacity:0;
+            }
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeInBackground{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+
+        /* MOBILE */
+        .modal-content{
+    padding:25px;
+}
+
+.modal-content p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* TEKS BERJALAN */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,0.15);
+
+    border-top:1px solid rgba(255,255,255,0.3);
+    border-bottom:1px solid rgba(255,255,255,0.3);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+}
+
+/* TEKS BERJALAN SMOOTH */
+.running-text{
+    width:100%;
+    overflow:hidden;
+
+    margin-top:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    padding:12px 0;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.running-text span{
+    display:inline-block;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+
+    padding-left:100%;
+
+    animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media screen and (max-width: 768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:28px;
+        margin-top:60px;
+    }
+
+    /* CARD BERJEJER */
+   .menu-container{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+}
+
+    .gambar{
+        width:100%;
+        max-width:100%;
+
+        min-height:150px;
+
+        padding:18px 12px;
+
+        border-radius:20px;
+    }
+
+    .gambar h3{
+        font-size:16px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    /* TOMBOL */
+    .navigation-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* MENU */
+    .side-menu{
+        width:200px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        padding:20px;
+    }
+
+    .modal-content h2{
+        font-size:22px;
+    }
+
+    .modal-content p{
+        font-size:14px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn{
+        top:15px;
+        left:15px;
+
+        padding:8px 14px;
+
+        font-size:13px;
+    }
+
+    /* ICON MENU */
+    .menu-icon{
+        width:45px;
+        height:45px;
+
+        font-size:26px;
+    }
+
+}
+
+/* =========================
+   HP KECIL
+========================= */
+/* =========================
+   RESPONSIVE HP
+========================= */
+@media screen and (max-width:768px){
+
+    .menu-container{
+        display:grid;
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:15px;
+    }
+
+    .gambar{
+        width:100%;
+        min-height:150px;
+
+        padding:18px 12px;
+    }
+
+    .gambar h3{
+        font-size:15px;
+    }
+
+    .gambar p{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+    </style>
+</head>
+<body>
+<!-- ICON GARIS 3 -->
+<div class="menu-icon" onclick="toggleMenu()">
+☰
+</div>
+
+<!-- MENU KABUPATEN -->
+<div class="side-menu" id="sideMenu">
+
+    <h3 style="color:white; margin-bottom:15px;">
+        Kabupaten / Kota
+    </h3>
+
+    <a href="Bengkalis.html">📍 Bengkalis</a>
+
+    <a href="Dumai.html">📍 Dumai</a>
+
+    <a href="Siak.html">📍 Siak</a>
+
+    <a href="Kampar.html">📍 Kampar</a>
+
+    <a href="Pelalawan.html">📍 Pelalawan</a>
+
+    <a href="Inhil.html">📍 Indragiri Hilir</a>
+
+    <a href="Inhu.html">📍 Indragiri Hulu</a>
+
+    <a href="Rokan Hilir.html">📍 Rokan Hilir</a>
+
+    <a href="Rokan Hulu.html">📍 Rokan Hulu</a>
+
+    <a href="Kuansing.html">📍 Kuantan Singingi</a>
+
+    <a href="Meranti.html">📍 Kepulauan Meranti</a>
+
+</div>
+    <h1><b>KABUPATEN BENGKALIS</b></h1>
+
+    <div class="running-text">
+    <span>Bengkalis Bermasa (Bengkalis Bermarwah, Maju, dan Sejahtera)</span>
+    </div>
+
+    <!-- TOMBOL MENU SEBELUMNYA -->
+    <a class="back-btn" href="menuawal.html">← Menu Sebelumnya</a>
+
+    
+
+    <div class="menu-container">
+
+         <div class="gambar" onclick="bukaModal('Mantra Mengukur Parang/Senjata tajam', '<b>Identitas Penutur</b>\nNama: Hery Budiman (Ngah Budi Resam)\nUsia: 53 Tahun\nTempat Tanggal Lahir: Selata Panjang, Kepulauan Meranti 7 November 1973\n\n<b>1. Sejarah dan Asal Usul</b>\n\nMantra ini adalah mantra yang biasanya dilakukan oleh Masyarakat kabupaten Bengkalis sekitar untuk mengukur sebilah senjata tajam. Mantra mengukur parang pada masyarakat Melayu Riau, khususnya dalam tradisi pandai besi atau penggunaan alat tajam, berkaitan dengan kepercayaan untuk menentukan apakah parang tersebut akan membawa keberuntungan (tuah) atau kesialan bagi pemiliknya. Biasanya dilakukan dengan mengukur panjang parang menggunakan jari atau jengkal tangan. Pengukuran dilakukan sepanjang mata parang sambil mengucapkan hitungan tertentu yang berulang.\nMantra ini dibacakan agar parang memiliki <i>isi</i>, kuat, tahan lama, dan tidak mendatangkan bahaya bagi pemiliknya (seperti mudah terkena luka atau menimbulkan pertengkaran). Dalam budaya Melayu, hal ini merupakan bagian dari kearifan lokal yang menggabungkan kepandaian teknis pandai besi dengan nilai-nilai spiritual.b>2. \n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nPersebaran tradisi ini meliputi desa-desa di 11 kecamatan Kabupaten Bengkalis, termasuk daerah-daerah yang masyarakatnya masih bertahan dengan ekonomi substansi dan kearifan lokal dalam menjaga lingkungan. 11 Kecamatan di Bengkalis antara lain, Bantan, Bandar Laksamana, Bathin Solapan, Bengkalis, Bukit Batu, Mandau, Pinggir, Rupat, Rupat Utara, Siak Kecil, Talang Muandau.\nDi tengah modernisasi, tradisi seperti mengukur parang masih dipertahankan sebagai bagian dari identitas budaya Melayu Riau, yang juga mencakup adat istiadat lain. Dengan kata lain secara umum, tradisi ini merupakan bagian dari kebudayaan pedesaan yang masih terjaga di wilayah Riau.\n\n<b>3. Karakteristik</b>\n\nMantra mengukur parang memiliki ciri unik ketika hendak dilakukan, khususnya dalam budaya Melayu, yang diucapkan saat seseorang hendak mengukur panjang bilah parang menggunakan jari (jengkal/ruas) untuk menentukan keberuntungan, fungsi, atau karakter parang tersebut. Mantra ini diucapkan berulang kali mengikuti ruas jari atau jengkal tangan yang menelusuri panjang bilah parang dari pangkal ke ujung. Ciri utamanya adalah penyebutan urutan atau nasib yang diramalkan pada parang tersebut. Biasanya menggunakan pola seperti: “Tuan – Puan – Patih – Raja – Malang” atau “Maju – Mundur – Untung – Malang” di setiap hitungan ruas sedangkan yang diucapkan oleh Pak Ngah dalam video yang saya lampirkan adalah “Berhubung – Bertampal – Sampan – Putus tali – Bergedung – Berkapal – Makan tak tercari”. Mantra sering kali memiliki rima akhir yang teratur dan irama yang khas, menjadikannya terdengar magis saat diucapkan. Diksi yang digunakan cenderung kuno, metaforis, dan penuh simbol untuk menegaskan tujuan atau karakter parang tersebut (misalnya, menolak bala, membawa rezeki, atau ketajaman).Tujuannya agar parang yang diukur aman digunakan (tidak mencelakai pemilik), tajam, dan mempermudah pekerjaan.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/drive/folders/1jAiJ0kPB969DylXTRAQPnb6o--VoQR53')">
+            <h3>Mantra Mengukur Parang/Senjata tajam</h3>
+            <p>Chelsea Victoria Rita Uli</p>
+            <p>25051102727</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Legenda Asal Usul Bengkalis', 'Identitas Penutur\nNama: Arman\n(Ketua Kesekretariatan Lembaga Melayu Riau)\n\n<b>1. Sejarah Asal Usul Legenda Bengkalis</b>\n\nAda seekor ikan terubu yang menguasai lautan di Bengkalis. Selain itu, terdapat pula segerombolan ikan bilis. Setiap hari ikan bilis diserang oleh ikan terubu yang semakin lama semakin ganas. Akhirnya gerombolan ikan bilis bermusyawarah untuk menyusun strategi melawan ikan terubu.\n\nKarena ukuran ikan terubu jauh lebih besar dibandingkan ikan bilis, maka ikan bilis menyerang secara bersama-sama. Ada yang menggigit ekor, mata, hingga kepala ikan terubu. Ketika diserang, ikan terubu berteriak “sakit lis, sakit lis” hingga tubuhnya menjadi bengkak. Dari situlah dipercaya muncul nama “Bengkalis”, yaitu dari kata “bengkak” dan “lis” yang merujuk pada ikan bilis.\n\n<b>2. Persebaran Legenda Asal Usul Bengkalis</b>\n\nLegenda asal usul Bengkalis telah tersebar luas dan sering diceritakan oleh berbagai komunitas masyarakat Melayu. Salah satu contohnya yaitu komunitas Yong Dolah dari Riau. Cerita ini telah dikenal hampir di seluruh kabupaten/kota pesisir seperti Dumai, Siak, Selat Panjang, Meranti, bahkan sampai ke negara tetangga yaitu Malaysia.\n\n<b>3. Kapan Legenda Asal Usul Bengkalis Diceritakan?</b>\n\nLegenda ini biasanya diceritakan pada acara reuni, silaturahmi, halal bihalal, dan pertemuan keluarga atau masyarakat. Dalam kegiatan tersebut masyarakat saling bertukar cerita, dan legenda asal usul Bengkalis menjadi salah satu cerita yang sering disampaikan.\n\n<b>4. Karakteristik</b>\n\nLegenda asal-usul Bengkalis memiliki karakteristik khas sebagai cerita rakyat yang berkembang dari kepercayaan dan imajinasi masyarakat setempat. Cerita ini disampaikan secara turun-temurun melalui tradisi lisan sehingga memiliki beberapa variasi versi, namun tetap mempertahankan inti cerita yang sama. \n\n<b>5. Video Penutur</b>\nhttps://drive.google.com/file/d/1Imr4ywC6XMzLd0TaG1LfjXifRvBbwF3O/view?usp=drivesdk')">
+            <h3>Legenda Asal Usul Bengkalis</h3>
+            <p>Chelsealia Cristyani</p>
+            <p>25051103552</p>
+        </div>
+
+       <div class="gambar" onclick="bukaModal('Mantra', 'Identitas Penutur\nNama: Datuk Ahman\nAlamat: Jl. Soedriman\n\n<b>1. Sejarah dan Asal Usul</b>\n\nPenyebaran mantra tersebut secara lisan, karena melayu identik dengan islam maka mantra tersebut menggunakan ayat ayat Al-qur’an dan orang orang zaman dulu yang ingin menyembuhkan anak anak atau orang terdekat nya yang sedang sakit cukup hanya menggunakan air putih biasa yang di beri ucapan ayat Al–quran. \n\n<b>2. Persebaran</b>\n\nUntuk daerahnya sudah hampir seluruh wilayah, terkhusus nya seluruh Riau sudah tau dan sering menggunakan mantra tersebut.\n\n<b>3. Karakteristik</b>\n\nKarakteristik utamanya meliputi penggunaan bahasa metafora yang esoterik (khusus), rima yang bebas, adanya perulangan kata (repetisi), serta bersifat sakral atau misterius. Bahasa mantra seringkali puitis mengandung majas metafora dan terkadang menggunakan bahasa kuno yang hanya dipahami oleh dukun atau penuturnya.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1-OAai53wC70_F33T5C1YhgqiuvNvRmDp/view?usp=drivesdk')">
+            <h3>Mantra</h3>
+            <p>Mafaza Hashifa</p>
+            <p>25051207263</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Syair Tanah Mandau', '<b>Identitas Penutur</b>\nNama: Herry Budiman (Ngah Budi Resam)\nUmur: 52 tahun\nTempat Tanggal Lahir: Selat Panjang, 7 November 1973\nAlamat: Duri, kabupaten Bengkalis, kecamatan Mandau\n\n1. Sejarah dan Asal Usul\n\nSyair Tanah Mandau merupakan sebuah karya sastra tradisional  yang sangat erat kaitannya dengan sejarah dan identitas masyarakat di wilayah Mandau, yang kini secara administratif berada di Kabupaten Bengkalis, Riau.\n\n2. Persebaran Wilayah dan Tradisi\n\nPersebaran syair Tanah Mandau ada di kabupaten Bengkalis dan ada di kecamatan- kecamatan yang ada di bengkalis Kecamatan Bantan, Kecamatan Bukit Batu, Kecamatan Siak Kecil, Kecamatan Bandar Laksamana, Kecamatan Mandau, Kecamatan Pinggir, Kecamatan Talang Muandau, Kecamatan Bathin Solapan, Kecamatan Rupat, Kecamatan Rupat Utara\n\n3. Karakteristik Yang Membedakan Dengan Sastra Lain\n\nSyair membedakan diri dari sastra lisan Melayu lainnya melalui struktur rima tetap (a-a-a-a) dan fungsinya sebagai narasi yang utuh, di mana seluruh barisnya adalah isi tanpa sampiran seperti pada pantun. Berbeda dengan gurindam yang singkat atau mantra yang berpola bebas, syair secara konsisten terdiri dari empat baris per bait yang saling bersambung membentuk cerita panjang atau pengajaran mendalam. Selain itu, jika hikayat disampaikan dalam bentuk prosa, syair wajib dilagukan dengan irama khusus, menjadikannya bentuk sastra lisan yang lebih formal, melodius, dan terstruktur secara puitis dibandingkan ragam lainnya.\n\n4. Video Penutur\n\nhttps://drive.google.com/drive/folders/1S367yNDXB7ANxMYucBYrr9G98E1ZIZ18')">
+            <h3>Syair Tanah Mandau</h3>
+            <p>Melati Gracia Situmorang</p>
+            <p>25051103489</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Pantun Buka Pintu', '<b>Identitas Penutur</b>\nNama: Muzafarsyah\nTempat Tanggal Lahir: Sungai Pakning, 26 Februari 1960\nAsli Orang:  Melayu Bukit Batu\nTempat Tinggal: Jl. Sudirman, Sungai Pakning, Kecamatan Bukit Batu, Kabupaten Bengkalis\nPelaku sejarah sekaligus pembawa acara dalam prosesi perkawinan Melayu. Beliau sering diundang untuk memandu atau menyelenggarakan rangkaian acara adat perkawinan Melayu.\n\n<b>1. Adat Melayu Pantun Buka Pintu</b>\n\nAdat Buka Pintu tidak diketahui secara asal-usulnya serta siapa yang menciptakannya, karena tradisi ini sudah ada sejak zaman dahulu dan diwariskan dari raja-raja terdahulu sehingga asal dari daerah tidak dapat dipastikan. Namun, menurut Pak Muzafarsyah selaku pelaku sejarah, adat Buka Pintu dapat ditemukan di daerah Sungai Pakning, yang secara spesifik berada di Kecamatan Bukit Batu.\n\nPakning sendiri merupakan ibu kota dari Bukit Batu, sebuah wilayah di Kabupaten Bengkalis. Bukit Batu merupakan bagian dari pusat kekuasaan Kerajaan Siak, sehingga adat dan tradisi di wilayah ini banyak dipengaruhi oleh budaya Siak. Kerajaan Siak sebagai pusat kebudayaan Melayu memiliki hubungan sejarah dengan Johor yang turut mempengaruhi perkembangan adat di wilayah kekuasaannya, termasuk Sungai Pakning. Persebaran tradisi ini juga telah berkembang luas di Asia Tenggara, seperti di Johor, Malaysia, dan Thailand.\n\nTradisi Buka Pintu merupakan tradisi berbalas pantun yang dilakukan antara pihak pengantin pria dan pengantin wanita dalam acara perkawinan Melayu. Sebelum masuk, pihak pria akan memberi sesuatu kepada pihak wanita, biasanya dengan membayar atau memberikan bingkisan semacam sirih, dan sebagainya.\n\nPada mulanya, pemberian tersebut dilakukan dengan membayar sejumlah uang Ringgit (RM), sebagai bentuk persyaratan, dan tidak memperhatikan berapa nilainya. Namun, secara umum pemberian pertama bernilai kecil, setelah pemberian kedua nilainya akan semakin tinggi dan begitupun pemberian seterusnya sampai akhir yang diinginkan pihak wanita. Intinya, pemberian tersebut terkadang bisa lebih dari tiga kali, tergantung seberapa besar mahar yang diinginkan pihak wanita.\n\nMaksud dari pintu di sini juga bukanlah pintu secara fisik, melainkan pintu yang berupa kain batik panjang yang digunakan sebagai pembatas antara kedua pihak ketika akan menyandingkan kedua pengantin. Pada umumnya, pelaksanaan tradisi ini dilakukan oleh orang-orang tua dari Suku Melayu di Pakning. Hal tersebut karena ilmu, pengalaman, serta kefasihan mereka dianggap lebih matang dibandingkan remaja saat ini. Selain itu, hanya sedikit remaja yang benar-benar ingin mempelajarinya. Namun, hal tersebut tidak menutup kemungkinan bahwa remaja dapat berkontribusi agar tradisi ini tidak punah dengan sendirinya.\n\nLangkah-langkah dalam melakukannya yakni: pertama-tama, pantun terlebih dahulu diucapkan oleh pihak pria dengan mengucapkan salam pertanda bahwa mereka ingin bertamu. Kemudian pihak wanita membalas salam tersebut dengan senang hati. Pihak pria kemudian menanyakan maksud dari ditutupnya pintu. Kemudian, pihak perempuan pun menjawab bahwa pintu ditutup untuk ingin mengetahui siapa yang datang.\n\nPihak pria selanjutnya menanyakan maksud ditutupnya pintu, meskipun mereka sudah mengetahui yang datang adalah pengantin pria. Pihak wanita kemudian menjawab, harus memenuhi syarat-syarat tertentu agar dapat dibukakan. Selanjutnya, pihak pria memberikan buah tangan yang pertama. Tidak mungkin hanya memberi uang dan bingkisan itu saja, dan langsung disuruh untuk masuk. Kemudian terjadilah berbalas-balas pantun antara pihak sampai pemberian yang dilakukan terus-menerus telah dianggap cukup.\n\nKarakteristik bahasa yang digunakan adalah Pantun Melayu Riau, yang memiliki kesamaan dengan Pantun Melayu Palembang, yaitu terdiri dari 4 baris (larik), ada 2 sampiran dan 2 isi, serta berima a-b-a-b atau a-a-a-a. Selanjutnya, dalam pengucapan diperlukan intonasi, irama dan gaya khas Melayu. Selain itu, dalam percakapan umumnya mengandung unsur celoteh, yaitu ocehan lucu atau percakapan spontan, jadi terkesan lebih menyenangkan, santai dan tidak kaku. Di balik semua itu, bahasa yang digunakan tetap memiliki unsur keseriusan demi tercapainya tujuan yang diinginkan. Hal ini berlaku untuk kedua belah pihak pengantin, baik yang bertamu maupun yang menyambut tamu.\n\nMakna dari tradisi ini adalah bahwa pengantin yang datang harus melakukan adat tertentu sebagai bentuk permohonan dan sopan santun dalam bertamu ke rumah orang sehingga tidak bisa masuk langsung sembarangan. Maka sebab itu, diadakannya acara adat Buka Pintu. Biasanya, pihak yang membuat syarat adalah pemilik rumah atau tuan rumah.\n\n<b>2. Isi Pantun</b>\n\n<b>Laki-Laki:</b>\n<i>Kuntum disulam kain tenunan</i>\n<i>Diberi corak warna nyo permai</i>\n<i>Assalamualaikum Tuan dan Puan</i>\n<i>Kami datang beramai-ramai</i>.\n\n<b>Perempuan:</b>\n<i>Kuntum merekah bungo setaman</i>\n<i>Baunya lembut menyegarkan diri</i>\n<i>Waalaikumsalam tuan dan puan</i>\n<i>Kami menyambut berputih hati</i>\n\n<b>Laki-Laki:</b>\n<i>Carilah buluh bawa ke pematang</i>\n<i>Awas tangan terkeno sembilu</i>\n<i>Darilah jauh kami datang Mengapa</i>\n<i>Tuan (Puan) menutup pintu?</i>\n\n<b>Perempuan:</b>\n<i>Bergalah sampan pergi ke hulu</i>\n<i>Mencari buluh barang sebatang</i>\n<i>Janganlah Tuan (Puan) berkato begitu</i>\n<i>Kami nak tau siapo yang datang?</i>\n\n<b>Laki-Laki:</b>\n<i>Bukan Kacang sebarang kacang</i>\n<i>Kacang dibawa ke benteng hulu</i>\n<i>Bukan datang sebarang datang</i>\n<i>Datang membawa pengantin baru</i>\n\n<i>Menanam Tebu di tengah ladang</i>\n<i>Ditebang satu langsung dibako</i>\n<i>Sudah tau kami yang datang</i>\n<i>Mengapo pintu belum dibuko</i>\n\n<b>Perempuan:</b>\n<i>Dari Mengkapan pergi ke Lubuk</i>\n<i>Singgah dulu di Pekanbaru</i>\n<i>Kalau Tuan (Puan) ingin nak masuk</i>\n<i>Penuhi dulu syarat membuko pintu</i>\n\n<b>Laki-Laki:</b>\n<i>Bungo Melur si Bungo Cino</i>\n<i>Boleh dicari di Sungai Mintan</i>\n<i>Kalau itu yang Tuan (Puan) tanyo</i>\n<i>Inilah dio kami berikan</i>\n\n(lalu memberi uang tebusan lewat bawah)\n\n<b>Perempuan:</b>\n<i>Cik Puan namonyo Putri</i>\n<i>Pahlawan Bestari pandai bersilat</i>\n<i>Pembuko pintu sudah Tuan (Puan) beri</i>\n<i>Sayang jumlahnyo belumlah tepat</i>\n\n<b>Laki-Laki:</b>\n<i>Kalau mencari buah seletup</i>\n<i>Banyak tumbuh disemak beluko</i>\n<i>Kalaulah tadi belumlah cukup</i>\n<i>Kami tambah paket ke duo</i>\n\n(lalu diberi lewat samping)\n\n<b>Perempuan:</b>\n<i>Dari Sinaboi bertolak ke Duri</i>\n<i>Bukitnyo tinggi jalanpun lambat</i>\n<i>Oiii Tuan (Puan) yang bijak bestari</i>\n<i>Duit segini nak beli sirihpun ta dapat</i>\n\n<b>Laki-Laki:</b>\n<i>Tersebutlah Rantau Baisdi Rokan Hilir</i>\n<i>Penduduknyo mudo, darenyo molek</i>\n<i>Inilah sebagai penebus yang terakhir</i>\n<i>Kalau ta cukup juo, penganten akan balek</i>\n\n(lalu beri lewat atas)\n\n<b>Perempuan:</b>\n<i>Berjalan ke Kubu teruslah ke Bagan</i>\n<i>Jalan berkelok kanan dan kiri</i>\n<i>Pembuko pintu sudah Tuan (Puan) serahkan</i>\n<i>Silakan masuk ke Istana Putri</i>\n\n<b>Laki-Laki:</b>\n<i>Berjalan mari ke Labuan Tanggo</i>\n<i>Mencari Bungo si Sedap malam</i>\n<i>Kalau kami sudah Tuan(Puan) terimo</i>\n<i>Kamipun masuk memberi salam</i>\n\n(Assalamualaikum Wr. Wb)\n\n<b>Perempuan:</b>\n<i>Lancang Kuning berlayar malam</i>\n<i>Haluan menuju ke laut dalam</i>\n<i>Tuan (Puan) Datang memberi salam</i>\n<i>Kami menjawab, Waalaikum salam</i>\n\n(kain dilepas dan penganten masuk)\n\n<b>3. Video Penutur</b>\n\nhttps://drive.google.com/file/d/1rhUkeIRA70kFV_RsUckZ8ZFFKyqifJF4/view?usp=drivesdk')">
+            <h3>Pantun Buka Pintu</h3>
+            <p> Bunga Bella Saskia Irfan Bey</p>
+            <p>25051207744</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Dodoi', '<b>Identitas Penutur</b>\nNama: Hery Budiman (Ngah Budi Resam)\nLahir di Selat Panjang Kabupaten Kepulauan Meranti Riau.7 November 1973. Penggiat seni teater bangsawan, pendiri sanggar Latah Tuah UIN SUSKA Riau. Pendiri sanggar Resam Kec. Mandau Kab. Bengkalis, penulis beberapa naskah teater yang pernah di pentaskan: Jeritan liang kubur, Sang Bumi, Bathin Teba Bertinggal di Kec. Mandau, sebagai Pendamping Desa Ekonomi Kab. Bengkalis. \n\n<b>1. Pengertian dan Asal usul dodoi</b>\n\nDodoi anak adalah sebuah nyanyian yang digunakan untuk menidurkan anak pada masyarakat Melayu, khususnya masyarakat Melayu di Siak. Kabupaten Siak adalah sebuah kabupaten di Provinsi Riau, Kabupaten Siak dulunya merupakan bagian dari wilayah Kabupaten Bengkalis (sebagai kewedanan/kecamatan) sebelum resmi dimekarkan menjadi kabupaten sendiri pada tahun 1999 berdasarkan UU No. 53 Tahun 1999.  Makna dari dodoi sama juga terdapat pada wilayah Melayu lainnya, seperti Kampar dengan istilah onduo dan beghandu, Kuantan Singingi dengan istilah Nandong, dan lain-lain. Tidak hanya di wilayah Melayu saja, tradisi menidurkan anak dengan menggunakan nyanyian juga terdapat pada kelompok masyarakat di negara-negara Asia. Seperti India Utara, terkenal dengan istilah thaalattu.  dodoi anak memiliki fungsi yaitu untuk menidurkan anak. Dalam dodoi anak terkadung alunan melodi yang menyejukkan, dalam artı tidak mengalami lompatan-lompatan nada yang curam, bahkan cenderung landai, serta berulang-ulang. Selain itu, dalam dodoi anak juga terdapat syair-syair yang di dalamnya terkandung pesan-pesan moral. seperti nasehat-nasehat tentang pentingnya menuntut ilmu. kebesaran Tuhan, keteladanan Rosulullah, berbakti pada orang tua, dan lain-lain. Seiring pesatnya arus perkembangan zaman, eksistensi dodoi anak saat ini mulai mengalami Pada rumah-rumah pergeseran. penduduk di sekitaran daerah bengkalis, sudah sangat jarang terdengar ibu-ibu menyenandungkan dodoi anak untuk menidurkan anaknya. Ianya sudah banyak digantikan oleh lagu-lagu populer yang dihidupkan melalui perangkat elektronik, seperti HP. CD plaver dan lain-lain. Pelaku-pelaku dodoi anak yang tersisa hanyalah orang-orang tua, yang pada masa mudanya masih mengalami peristiwa. tersebut. Secara visual, sudah jarang pula kelihatan ibu-ibu muda duduk mengayun anaknya sambil mendodoi.\n\n<b>2. Persebaran wilayah dan tradisi</b>\n\nDi Desa Balai Pungut, Desa Tasik Serai, Desa Muara Basung, Desa Meskom, dan Desa Bukit Batu yang berada di daerah Bengkalis, para ibu masih mempertahankan tradisi menuturkan dodoi kepada anak-anak mereka. Dodoi tersebut dilantunkan sebagai bentuk kasih sayang sekaligus untuk menenangkan dan menidurkan anak, sehingga tradisi lisan ini tetap hidup dan diwariskan dari generasi ke generasi.Tradisi dodoi biasanya dilakukan dengan cara mengayun anak menggunakan buaian kain sambil melantunkan syair-syair sederhana yang berisi doa, harapan, dan nasihat untuk masa depan anak. Lantunan dodoi disampaikan dengan nada lembut dan berulang-ulang hingga anak tertidur. Tradisi ini tidak hanya berfungsi sebagai pengantar tidur, tetapi juga menjadi sarana mempererat hubungan emosional antara ibu dan anak serta sebagai media pewarisan nilai-nilai budaya Melayu yang masih dijaga oleh masyarakat di desa-desa Bengkalis tersebut.\n\n<b>3. Karakteristik</b>\n\nKarakteristik dodoi di daerah Bengkalis memiliki ciri khas yang membedakannya dengan nyanyian pengantar tidur dari daerah lain, yaitu kuatnya unsur religius atau nilai-nilai Islam di dalam liriknya. Dalam dodoi, para ibu sering menyelipkan doa-doa, pujian kepada Allah, serta harapan agar anak kelak menjadi anak yang saleh dan berakhlak baik. Selain itu, dodoi juga banyak mengandung shalawat dan penyebutan Nabi Muhammad sebagai teladan kehidupan. Lantunan dodoi tidak hanya berfungsi untuk menidurkan anak, tetapi juga menjadi sarana penanaman nilai keislaman sejak dini, sehingga anak tumbuh dengan mengenal ajaran agama dan meneladani sifat-sifat Nabi Muhammad dalam kehidupan sehari-hari. Contohnya berikut ini:\n<i>Lailaha ellallah</i>\n<i>Nabi Mohammad Rasulullah</i>\n<i>Tiado Tohan selaen Allah</i>\n<i>Nabi Mohammad Pesughoh</i>\n<i>Tuan haji bebaju jubbah</i>\n<i>Naek ke daghat membughu</i>\n<i>USO Allah Oghang mengaji memuji Oghang mengampon doso sembahyang</i>\n<i>Rosulullah</i>\n<i>Lailahaillallah</i>\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1Ito2rjuX58JNPxDx3YCAhXas_ljXYw7w/view?usp=drivesdk')">
+            <h3>Dodoi</h3>
+            <p>Hamdi Fachri Ahmadi</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Syair Meneroka Lancang Kuning', '<b>Identitas Penutur</b>\nNama: Muhammad Safikri\nUsia: 25 Tahun\nAlamat:Pangkalan Batang, Kabupaten Bengkalis, Riau\nBerdasarkan keterangan penutur, ia telah tertarik pada dunia sastra sejak duduk di bangku Sekolah Menengah Pertama (SMP). Ketertarikannya tersebut dipengaruhi oleh gurunya yang juga merupakan seorang penutur sastra lisan Melayu. Dari situ, ia mulai mendalami dan mempelajari berbagai bentuk sastra lisan, termasuk syair.\n\nDalam proses pembelajarannya, Muhammad Safikri kemudian belajar langsung dari para ahli, salah satunya dari M. Rizal Ical sebagai penulis syair Meneroka Lancang Kuning. Ia mendapatkan pembelajaran secara langsung mengenai isi, makna, serta cara penuturan syair tersebut.\n\nSelain sebagai penutur, Muhammad Safikri juga merupakan seorang penulis puisi. Ia juga menyampaikan bahwa dirinya telah beberapa kali tampil membawakan syair dalam berbagai kegiatan, seperti lomba-lomba serta acara adat dan pernikahan. Pengalaman tersebut diperoleh sebagai bagian dari keterlibatannya dalam dunia sastra Melayu, khususnya dalam penuturan syair.\n\n<b>1. Sejarah dan Asal Usul</b>\n\nSyair Meneroka Lancang Kuning merupakan karya sastra lisan Melayu yang berasal dari cerita rakyat masyarakat Riau, khususnya yang berkembang di wilayah kerajaan Bukit Batu, Kabupaten Bengkalis. Syair ini berkaitan dengan legenda tentang Lancang Kuning, yaitu kapal kebesaran sultan yang menjadi simbol kejayaan dan kekuasaan kerajaan Melayu.\n\nLancang Kuning digambarkan sebagai kapal perang atau kapal perhubungan laut berwarna kuning cerah, yang melambangkan kebesaran dan kehormatan raja. Kapal ini sering dihiasi dengan ukiran kepala naga pada bagian haluannya sebagai simbol kekuatan dan kekuasaan di laut. Dalam budaya Melayu, warna kuning merupakan warna kebesaran yang hanya boleh digunakan oleh raja atau keluarga kerajaan.\n\nSebagai sastra lisan, syair ini pada awalnya tidak diketahui secara pasti pengarangnya (anonim) karena diwariskan secara turun-temurun. Namun, dalam perkembangannya, syair ini telah dituliskan kembali dalam bentuk karya sastra oleh penulis modern, salah satunya oleh M. Rizal Ical. Meskipun demikian, penyampaiannya di masyarakat tetap dilakukan oleh penutur yang berbeda-beda sebagai bagian dari tradisi lisan.\nSecara definisi, syair ini termasuk dalam sastra lisan Melayu yang berbentuk puisi lama, yang biasanya digunakan untuk menyampaikan cerita, nasihat, serta nilai-nilai kehidupan masyarakat. Syair Meneroka Lancang Kuning sendiri bertujuan untuk menggali kembali sejarah, kearifan lokal, serta nilai-nilai kepemimpinan dalam budaya Melayu.\n\nHingga saat ini, keberadaan syair ini masih dapat ditemukan, meskipun tidak lagi sepopuler dahulu. Syair ini masih dilestarikan dalam bentuk pertunjukan seni, pembelajaran budaya, serta diwariskan secara turun-temurun di kalangan masyarakat Melayu, khususnya di daerah Bengkalis.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nTradisi syair Meneroka Lancang Kuning berasal dari wilayah Riau dan masih berkembang di beberapa daerah yang memiliki latar budaya Melayu, seperti Bengkalis dan sekitarnya. Namun, dalam kehidupan sehari-hari, penggunaan syair ini sudah mulai jarang ditemukan.\n\nSaat ini, syair Meneroka Lancang Kuning lebih sering ditampilkan dalam acara-acara tertentu, seperti pernikahan, kegiatan adat, maupun acara formal yang biasanya diawali dengan penuturan syair sebagai bentuk penghormatan dan pembuka acara. Hal ini menunjukkan bahwa keberadaan syair masih dipertahankan, meskipun tidak lagi digunakan secara luas dalam kehidupan sehari-hari.\n\nDi beberapa daerah, termasuk Pangkalan Batang, tradisi ini masih dikenal oleh masyarakat, terutama oleh penutur atau pelaku seni yang memang memiliki ketertarikan dan kemampuan dalam bidang sastra Melayu. Meskipun demikian, tidak semua masyarakat dapat menuturkan syair tersebut.\n\nPewarisan syair biasanya dilakukan melalui proses pembelajaran, baik secara langsung dari guru maupun melalui pengalaman dalam mengikuti kegiatan budaya. Hal ini menyebabkan penyebarannya cenderung terbatas pada orang-orang tertentu yang benar-benar mendalami bidang tersebut.\n\n<b>3. Karakteristik</b>\n\nSyair Meneroka Lancang Kuning memiliki beberapa karakteristik yang membedakannya dari syair Melayu lainnya. Salah satu ciri khasnya terletak pada tema yang diangkat, yaitu tentang pelayaran dan simbol kebesaran kerajaan Melayu yang diwujudkan melalui gambaran Lancang Kuning sebagai kapal sultan.\nSyair ini menceritakan tentang perjalanan sebuah kapal Lancang Kuning yang berlayar mengarungi lautan. Dalam perjalanannya, digambarkan berbagai tantangan dan keadaan yang harus dihadapi. Kisah tersebut tidak hanya menggambarkan pelayaran secara fisik, tetapi juga mengandung makna tentang perjalanan hidup manusia yang memerlukan kehati-hatian, kebijaksanaan, dan tanggung jawab agar dapat mencapai tujuan dengan selamat.\n\nSelain itu, syair ini menggunakan simbol-simbol seperti kapal, lautan, dan pelayaran yang tidak hanya bermakna secara harfiah, tetapi juga mengandung makna filosofis tentang kehidupan. Hal ini menjadikan syair ini memiliki makna yang lebih mendalam dibandingkan dengan syair lain.\n\nDari segi penyampaian, syair Meneroka Lancang Kuning biasanya didendangkan dengan menggunakan intonasi dan irama khas Melayu. Penuturannya lebih menekankan pada kekuatan suara dan penghayatan. Dalam banyak kasus, terutama pada acara adat atau formal, syair disampaikan tanpa menggunakan alat musik agar makna dan kata-katanya lebih jelas terdengar oleh pendengar. Namun, dalam beberapa pertunjukan seni yang bersifat lebih modern atau dipentaskan di panggung, syair ini juga dapat diiringi dengan alat musik tradisional Melayu, seperti gambus, rebana, atau alat musik Melayu lainnya.\nSelain sebagai bentuk karya sastra, syair ini juga memiliki fungsi sebagai sarana penyampaian pesan dan nasihat kepada pendengar. Syair ini sering digunakan dalam acara adat, pernikahan, maupun kegiatan formal sebagai pembuka acara, sehingga menjadi bagian dari pelengkap dalam suatu kegiatan sekaligus bentuk penghormatan terhadap tradisi.\n\nSyair ini juga memiliki keterkaitan yang kuat dengan identitas budaya masyarakat Riau, sehingga menjadi salah satu bentuk warisan budaya yang mencerminkan nilai-nilai dan kebudayaan Melayu.\n\n<b>4. Video Penutur</b>\nDalam video tersebut ditampilkan penuturan syair Meneroka Lancang Kuning oleh penutur. Syair disampaikan dengan menggunakan intonasi dan irama khas Melayu, sehingga terdengar puitis dan memiliki nilai estetika.\nhttps://drive.google.com/drive/folders/1IX4Agtw15F8B2tDL4wZ7EnEG4r4fqww1')">
+            <h3>Syair Meneroka Lancang Kuning</h3>
+            <p>Nazwa Attira Dwi Harinda</p>
+            <p>25051105083</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Tradisi Tawo Denah', '<b>Identitas Penutur</b>\nNama: Saddiah\nUsia: 56 Tahun\nJenis Kelamin: Perempuan\nAgama: Islam\nTempat Tanggal Lahir: Sungai Injab, 03 Agustus 1969\nLokasi: Pulau Rupat\n\n<b>1. Asal-Usul dan Kepercayaan Tawo Denah</b>\n\nMenurut kepercayaan masyarakat setempat, penyakit Denah berasal dari gangguan makhluk astral yang selalu berada di depan tangga rumah. Sosok gaib ini dikenal melalui aroma khas wewangian bedak dalam edah —bedak tradisional yang biasa digunakan ibu-ibu setempat selama masa pemulihan pasca-melahirkan. Jika seseorang tetap keluar rumah setelah mencium aroma tersebut, diyakini ia akan terserang Denah, yaitu penyakit yang menyebabkan kaki bengkak hebat. Rasa sakitnya hanya muncul saat matahari terbit dan terbenam, menandakan waktu aktifnya gangguan tersebut.\n\n<b>2. Proses Pengobatan Tawo Denah</b>\n\nTawo Denah adalah ritual pengobatan tradisional untuk mengusir gangguan makhluk halus penyebab penyakit ini. Ritual ini dilakukan oleh dukun atau tabib berpengalaman dengan langkah-langkah berikut:\n\nPengucapan Mantra:\nDukun mengucapkan mantra sakral sebagai berikut:\n<i>Nah kerenah anak Tiong tekalau Kalau aku nawo denah anak aku jangan di alau dikau Jago anak aku dumah aku  jago anak dikau tanah.</i>\n\nMantra ini diyakini menyerukan perlindungan dan mendorong kekuatan gaib.\n\nRitual Sembow (Semburan Kunyahan) :\nSetelah mantra, dilakukan sembow sebanyak 3 kali berturut-turut selama tiga petang (tiga sore berturut-turut).\n\nBahan-bahan:\nCekou, jerangau, bolai, sirih, kapur, dan gambir—semua dikunyah hingga halus.\n\n<b>Cara pelaksanaanya:</b>\n\n*Sembow pertama: Disemprotkan ke kaki pasien.\n*Sembow kedua : Disemprotkan ke tanah di sekitar rumah.\n\nProses ini diulang hingga 3 kali per sesi, dengan total 3 sesi selama tiga sore.\n\nTradisi Tawo Denah tersebar luas di Pulau Rupat , tidak hanya di Desa Sungai Injab , tetapi juga di Desa Sungai Rambai dan Markruh . Ritual ini tetap lestari sebagai bagian dari warisan budaya Melayu lokal, menggabungkan unsur spiritual dan pengobatan alami untuk mengatasi penyakit yang dianggap mistis. Meskipun terlihat sama dengan tawo barah dua pengobatan itu berbeda dalam menangani penyakit sebab barah dan denah sudah jauh berbeda hanya saja beberapa bahan obat-obatan sama.\n\n<b>3. Video Penutur</b>\nhttps://drive.google.com/file/d/1ufkpesbodOw328qPNTlGnOkKLVZ7yMEe/view?usp=drivesdk')">
+            <h3>Tradisi Tawo Denah</h3>
+            <p>Nadia Angriyani</p>
+            <p>25051101826</p>
+        </div>
+
+        <div class="gambar" onclick="bukaModal('Badikei (Sakai)', '<b>Identitas Penutur</b>\nNama: Yosi\nUmur:  ± 40 Tahun\nPeran: Dukun aktif pada ritual Badikei kecil di Batin Batuah\n\nBeliau merupakan salah satu dukun yang masih melakukan pengobatan Badikei, beliau telah diajarkan dan harus meneruskannya untuk generasi berikutnya. Beliau telah belajar bersama sang Ibu (dukun) sejak remaja hingga dewasa dan telah melihat cara pengobatan dilakukan, sehingga beliau hanya memperdalam dan menyempurnakan tata cara ritual yang dilakukan agar sesuai dengan yang diwariskan oleh keluarganya. Beliau akan mengajarkan dan mewariskannya kepada anak atau bahkan kepada cucunya. Dalam sistem pewarisan ritual Badikei hanya diwariskan kepada yang sedarah untuk menjamin berkelanjutan tradisi keluarga. Pewarisan ritual Badikei kepada orang yang tidak sedarah akan dianggap sebagai pelanggaran terhadap tatanan adat dan spiritual. Beliau sampai sekarang masih melakukan pengobatan Badikei, beliau masih sering dipanggil oleh masyarakat sekitar untuk melakukan pengobatan.\n\n<b>1.Sejarah dan Asal Usul</b>\n\nSuku sakai yang saya temui pada daerah Duri merupakan suku sakai luar, suku Sakai luar merupakan masyarakat suku Sakai yang hidup berdampingan dengan permukiman-permukiman Melayu, Minang dan suku-suku lainnya. Masyarakat sekitar banyak yang sudah berdampingan dengan teknologi (Smart Phone/HP) dan transportasi seperti mobil dan motor. Badikei berasal dari kata “Dikei” atau “Dikir”. Ritual ini merupakan pengobatan untuk memohon kesembuhan terhadap penyakit, keteguran dan lainnya. Badikei ini merupakan pengobatan suku Sakai yang masih ada sampai sekarang. Tradisi suku Sakai yang bernama Badikei ini telah ada sejak zaman nenek moyang terdahulu mereka dan di wariskan turun temurun dari generasi ke generasi lain yang memiliki hubungan sedarah. Tradisi pengobatan Badikei ini merupakan pengobatan tradisional, karena dilakukan oleh seorang dukun, dayang, orang yang sedang sakit dan sebagai pemain musik untuk mengiringi pengobatan yang sedang berlangsung. Dalam pelaksanaan Badikei terbagi menjadi Badikei kecil, Badikei besar dan Badikei untuk memulihkan jiwa dukun dukun agar merasa tubuhnya segar kembali. Badikei yang saya dapat pada daerah Duri adalah Badikei kecil.\n\n<b>2. Persebaran Wilayah dan Tradisi</b>\n\nKabupaten Bengkalis menjadi wilayah persebaran utama suku Sakai terutama pada kecamatan Mandau, Pinggir, dan Bathin Solapan yang menjadi lokasi tradisi Badikei masih dipraktikkan secara turun temurun. Pada daerah Duri tepatnya di Batin Batuah, pelaksanaan tradisi Badikei yang saya lihat hanya Badikei besar dan Badikei kecil, tetapi saya mewawancarai dukun yang melaksanakan Badikei kecil, Badikei kecil ini dilakukan oleh seorang dukun dan hanya menggunakan bahan/alat yang sederhana, seperti lilin, kemenyan, pinang, kapur sirih, gambir dan sirih. Pada Badikei kecil ini bisa dilakukan untuk orang keteguran, sakit demam, perut, pinggang dan lainnya. Untuk lilin pada Badikei besar menggunakan lilin lebah sedangkan Badikei kecil menggunakan lilin asli yang tidak dibuat oleh pabrik. Pada saat pengobatan dukun akan menyiapkan bahan dan alat yang akan digunakan selama pengobatan, untuk lilin akan dinyalakan, lalu sang dukun akan menaruh kemenyan dengan daun sirih/pinang/gambir pada satu tempat yang sama. Dukun akan melanjutkan pengobatan dengan kemenyan dan daun sirih tersebut memutari lilin satu kali dan tangannya akan mengusap ke api lilin, lalu ia mulai meremas kemenyan dan daun sirih, diucapkannya mantra, lalu akan diusap pada dahi orang yang sakit. Tradisi Badikei ini akan diwariskan kepada anak cucu generasi berikutnya, untuk syarat yang harus dipenuhi untuk menjadi pewaris tidak ada, hanya saja memiliki ikatan darah.\n\n<b>3. Karakteristik Yang Membedakan dengan Sastra Lain</b>\n\nPada Badikei kecil perbedaannya terdapat pada alat, bahan, serta orang yang berperan hanya dukun dan orang yang sedang sakit. Tradisi ini masih menggunakan bahan dan alat yang berasal dari alam sekitar, seperti pinang, gambir, sirih dan lain halnya. Penggunaan bahan alam ini bukan hanya sekedar pelengkap, tetapi simbol penghormatan terhadap alam semesta. Mantra akan diucapkan pada saat pengobatan sedang berlangsung, diawali dengan bacaan <i>Bismillahirrahmanirrahim</i>. Mantra yang diucapkan bukan hanya sekedar kata-kata, melainkan media untuk meminta kesembuhan kepada roh nenek moyang yang diyakini memiliki kekuatan spiritual. Hal ini yang membedakan dengan sastra lisan seperti pantun atau koba. Meskipun ritual ini berakar pada kepercayaan terhadap roh leluhur, terdapat unsur pencampuran yang dibuktikan dengan bacaan <i>Bismillahirramanirrahim</i> sebagai pembuka manta yang menunjukkan suku Sakai memadukan nilai keislaman dengan tradisi leluhur. Pada jenis Bedikei kecil, karakteristik yang paling dasar adalah pewarisannya yang bersifat tertutup, keahlian dan mantra hanya boleh diwariskan kepada mereka yang memiliki hubungan darah, dilakukan untuk menjaga kesaktian tersebut agar tidak luntur dan menjaga identitas dan wewenang spiritual keluarga pengobat tetap terjaga.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/drive/folders/15ujoZ6HizhSMlwlyJD7dfzOIf37dmsr3?usp=drive_link')">
+            <h3>Badikei (Sakai)</h3>
+            <p>Putri Wahyuni</p>
+            <p></p>
+        </div>
+        
+        <div class="gambar" onclick="bukaModal('Yong Dollah', '<b>Identitas Penutur</b>\nNama:  Hery budiman (Ngah Budi Resam)\nTempat / tanggal lahir: Selat Panjang Kabupaten Kepulauan Meranti, Riau 7 November 1973.\nTempat Tinggal: Kec. Mandau, sebagai pendamping desa ekonomiKkab. Bengkalis.\nMerupakan pendiri seni teater bangsawan, pendiri sanggar latah tuah UIN Suska Riau, Pendiri sanggar di kabupaten Bengkalis, dan penulis beberapa naskah teater yang pernah dipentaskan seperti jeritan liang kubur, sang bumi, dan bathin teba.\n\n<b>1. Sejarah Dan Asal Usul</b>\n\nYong Dollah awalnya muncul sebagai cerita-cerita humor lisan yang beredar di kalangan masyarakat Melayu Bengkalis. Tokohnya, Abdullah bin Endong, lebih dikenal dengan nama panggilan Yong Dollah, dan nama ini kemudian melekat pada kumpulan cerita jenaka yang dituturkan tentang dirinya. Cerita-cerita ini kemudian berkembang menjadi salah satu genre dalam cerita jenaka Melayu, karena isinya ringan, lucu, dan sering berisi rekaan yang di luar logika umum, tetapi tetap digemari masyarakat.\n\n<b>2. Persebaran Dan Tradisi</b>\n\nPersebaran Yong Dollah terutama kuat di Bengkalis, Riau, dalam lingkungan masyarakat Melayu setempat. Penyebarannya meluas karena cerita-cerita itu dituturkan dalam suasana santai di kedai kopi saat waktu senggang, yang oleh masyarakat Bengkalis disebut kahwe. Tradisi kahwe ini penting karena berbeda dari pola pewarisan sastra lisan yang biasanya melalui keluarga, cerita Yong Dollah menyebar lewat pergaulan, obrolan, dan kebiasaan berkumpul.\n\n<b>3. Karakteristik</b>\n\nYang membedakan Yong Dollah dari banyak sastra lisan lain adalah sistem pewarisannya yang sosial dan komunal, bukan semata-mata diwariskan dalam keluarga. Selain itu, cerita-ceritanya punya ciri jenaka, hiperbolik, dan sering tidak realistis, sehingga sebagian orang menilainya sebagai “bohong” atau rekaan, tetapi justru unsur itulah yang membuatnya khas dan bertahan populer.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1WnTFNhN2mHPUwwevlvJPz1d_Ib9aknqY/view?usp=drivesdk .')">
+            <h3>Yang Dollah</h3>
+            <p>Fauziah qurratul’ain</p>
+            <p>25051100748</p>
+        </div>
+        
+         <div class="gambar" onclick="bukaModal('Nyanyian Sawang', '<b>Identitas Penutur</b>\nNama: Saddiah\nUsia: 56 Tahun\nAgama: Islam\nJenis Kelamin: Perempuan\nTempat Tanggal Lahir: Sungai Injab, 03 Agustus 1969\n\n<b>1. Asal Usul Nyanyian Sawang</b>\n\nSawang atau demam buah kayu adalah penyakit kulit yang menimbulkan rasa gatal, panas, dan tidak nyaman pada kulit. Asal mulanya dibuat nyanyian sawang karena ada seorang anak yang terkena sawang. Anak itu suka (magentah) merengek rengek tidak bisa tidur disebabkan gatal di kulitnya. Kemudian seorang dukun kampung menciptakan nyanyian sawang dengan lirik kiasan, memohon agar penyakit ini tidak menyakiti anak tersebut. Ternyata nyanyian itu dirasa sangat ampuh seolah menjadi sugesti penghilang rasa sakit. Sehingga lagu itu dipercaya turun temurun hingga sekarang.\n\nTidak ada tambahan lain hanya lagu nyanyian sawang yang terus diulang setiap mengalami sawang.\n\nNyanyian sawang hanya digunakan untuk meredakan rasa gatal ataupun panas yang diakibatkan oleh demam kayu bukan menjadi mantra pengobatan namun nyanyian sawang ini cukup untuk meredakan rasa tidak nyamannya.\n\n<b>2. Persebaran Wilayah</b>.\n\nMenurut dari penutur yang saya wawancarai Nyanyian sawang tersebar di pulau Rupat khususnya di Sungai Injab, Sei Rambai, Tanjung Pura. Ada juga di beberapa daerah pesisir lain di Riau, tetapi tidak sekuat dan sering digunakan seperti di pulau Rupat.\n\n<b>3. Karakteristik</b>\n\nHal yang paling membedakan nyanyian sawang di pulau rupat dengan daerah lain yaitu dialek lokal yang digunakan saat menyanyikan nyanyian sawang. Dialek yang digunakan adalah dialek melayu setenpat yang bercampur dengan ungkapan lama dan kata simbolik untuk penyembuhan. Banyak istilah yang sulit dipahami karena mengandung makna kiasan, mantra, dan kepercayaan turun-temurun. Tidak hanya penggunaan dialeknya tetapi juga fungsi dari nyanyian dan kepercayaan dari rakyat setempat. Di daerah ini nyanyian sawang dipercaya sebagai mantra pengobatan bukan sebagai media hiburan sehingga sifatnya sangat sakral bagi masyarakat setempat.\n\n<b>4. Video Penutur</b>\nhttps://drive.google.com/file/d/1d3RqxNfnzSy4NowlXxbRYj6zECZQB9i6/view?usp=drivesdk')">
+            <h3>Nyanyian Sawang</h3>
+            <p>Cyntya Insan Fauziah</p>
+            <P>25051105077</P>
+        </div>
+        
+    </div>
+
+    <div class="navigation-buttons">
+        <a class="btn" href="index.html"><b>Kembali ke Halaman Utama</b></a>
+
+        <a class="btn" href="Dumai.html"><b>Halaman Selanjutnya</b></a>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalDesc"></div>
+
+<div class="slide-buttons" id="slideButtons" style="display:none;">
+    <button onclick="prevSlide()">⬅ Sebelumnya</button>
+    <button onclick="nextSlide()">Selanjutnya ➡</button>
+</div>
+        </div>
+    </div>
+
+    
+
+  <script>
+
+function bukaModal(judul, deskripsi) {
+
+    const modalTitle = document.getElementById('modalTitle');
+
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalTitle.innerText = judul;
+
+    modalDesc.innerHTML =
+    deskripsi
+    .replace(
+        /(https?:\/\/[^\s]+)/g,
+        '<br><br><a href="$1" target="_blank" style="color:#87cefa; font-size:18px; font-weight:bold; text-decoration:none;">🎥 Lihat Video Penutur</a>'
+    )
+    .replace(/\n/g,'<br>');
+
+    document.getElementById('myModal').style.display = 'block';
+
+     document.body.style.overflow = "hidden";
+}
+
+function tutupModal() {
+
+    document.getElementById('myModal').style.display = 'none';
+
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById('myModal');
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+
+    document
+    .getElementById("sideMenu")
+    .classList
+    .toggle("active");
+}
+
+</script>
+</body>
+</html>
